@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>👨‍💻 Étudiant à 42 - Zibrian Cadinot</title>
+  <meta name="description" content="Portfolio et projets de Zibrian Cadinot, étudiant à l'école 42 : languages, outils, projets open-source et statistiques GitHub." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💻</text></svg>">
+  <style>
+    :root{
+      --bg: #0f1220;
+      --card: #151933;
+      --text: #e6e8f2;
+      --muted: #9aa3b2;
+      --accent: #5ce1e6;
+      --link: #8ab4ff;
+      --border: rgba(255,255,255,.08);
+      --shadow: 0 10px 30px rgba(0,0,0,.25);
+      --radius: 18px;
+      --maxw: 1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+      background: radial-gradient(1200px 600px at 10% -10%, rgba(92,225,230,.15), transparent 60%),
+                  radial-gradient(1200px 600px at 110% 10%, rgba(138,180,255,.12), transparent 60%),
+                  var(--bg);
+      color:var(--text); line-height:1.6;
+    }
+    a{color:var(--link); text-decoration:none}
+    a:hover{text-decoration:underline}
+
+    .wrap{max-width:var(--maxw); margin:0 auto; padding:32px 20px 60px}
+
+    header{
+      display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;
+      padding:18px 20px; background:rgba(255,255,255,.02); border:1px solid var(--border); border-radius:var(--radius);
+      backdrop-filter: blur(6px);
+      box-shadow: var(--shadow);
+    }
+    .title{
+      display:flex; align-items:center; gap:14px;
+    }
+    .avatar{
+      width:56px; height:56px; border-radius:50%;
+      background: linear-gradient(145deg, #1a1f3d, #0c1024); display:grid; place-items:center;
+      border:1px solid var(--border);
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.03);
+      font-size:28px;
+    }
+    h1{font-size:clamp(22px, 3vw, 28px); margin:0}
+    .subtitle{margin:2px 0 0; color:var(--muted)}
+
+    .card{background:var(--card); border:1px solid var(--border); border-radius:var(--radius); padding:22px; box-shadow:var(--shadow)}
+    .stack{display:grid; gap:18px; margin-top:22px}
+    @media(min-width: 900px){ .grid-2{grid-template-columns: 1fr 1fr} }
+
+    section{margin-top:28px}
+    section h2{margin:0 0 12px; font-size:clamp(18px, 2.3vw, 22px)}
+
+    /* Languages & Tools */
+    .icons{display:grid; grid-template-columns: repeat( auto-fit, minmax(60px, 1fr) ); gap:14px; align-items:center}
+    .icon{display:flex; align-items:center; justify-content:center; padding:10px; background:#0f1430; border:1px solid var(--border); border-radius:14px}
+    .icon img{width:38px; height:38px; display:block; filter: drop-shadow(0 6px 10px rgba(0,0,0,.25));}
+
+    /* Projects */
+    .projects a{display:block; padding:12px 14px; border:1px solid var(--border); border-radius:12px; background:#0e132b; box-shadow: var(--shadow)}
+    .projects li{list-style:none}
+    .projects{display:grid; gap:12px; padding-left:0}
+
+    /* Stats */
+    .stats{display:grid; gap:14px}
+    @media(min-width: 700px){ .stats{grid-template-columns: 1fr 1fr} }
+    .stats img{width:100%; height:auto; border-radius:14px; border:1px solid var(--border); background:#0e132b}
+
+    /* Footer */
+    footer{margin-top:28px; color:var(--muted); font-size:14px; text-align:center}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="card">
+      <div class="title">
+        <div class="avatar" aria-hidden="true">🛠️</div>
+        <div>
+          <h1>👨‍💻 Étudiant à 42 — Zibrian Cadinot</h1>
+          <p class="subtitle">Salut ! Moi c’est <strong>Zibrian</strong>, étudiant à l’<strong>école 42</strong>.<br />Ici, tu trouveras mes projets réalisés à 42 et tout ce que je code au quotidien.</p>
+        </div>
+      </div>
+      <nav aria-label="Liens rapides">
+        <a href="#projets">Projets</a> · <a href="#stats">Statistiques</a>
+      </nav>
+    </header>
+
+    <section class="card" aria-labelledby="tools">
+      <h2 id="tools">🛠️ Languages &amp; Tools</h2>
+      <div class="icons" role="list">
+        <div class="icon" role="listitem"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="C" /></div>
+        <div class="icon" role="listitem"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="C++" /></div>
+        <div class="icon" role="listitem"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python" /></div>
+        <div class="icon" role="listitem"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vim/vim-original.svg" alt="Vim" /></div>
+        <div class="icon" role="listitem"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/unrealengine/unrealengine-original.svg" alt="Unreal Engine" /></div>
+        <div class="icon" role="listitem"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/unity/unity-original.svg" alt="Unity" /></div>
+        <div class="icon" role="listitem"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/godot/godot-original.svg" alt="Godot" /></div>
+        <div class="icon" role="listitem"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="Linux" /></div>
+      </div>
+    </section>
+
+    <section id="projets" class="card" aria-labelledby="projects">
+      <h2 id="projects">🗂️ Projets</h2>
+      <ul class="projects">
+        <li><a href="https://github.com/Zibgame/42_Piscine" target="_blank" rel="noopener">42 Piscine</a></li>
+        <li><a href="https://github.com/Zibgame/improve-norminette" target="_blank" rel="noopener">Improve-Norminette</a></li>
+        <li><a href="https://github.com/Zibgame/Nvim-Config" target="_blank" rel="noopener">Nvim Config</a></li>
+        <li><a href="https://github.com/Zibgame/Vim-config" target="_blank" rel="noopener">Vim Config</a></li>
+      </ul>
+    </section>
+
+    <section id="stats" class="card" aria-labelledby="stats-title">
+      <h2 id="stats-title">📊 Statistiques GitHub</h2>
+      <div class="stats">
+        <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=Zibgame&layout=pie&theme=ambient_gradient&hide_border=true" alt="Top languages of Zibgame on GitHub" loading="lazy" />
+        <img src="https://github-readme-stats.vercel.app/api?username=Zibgame&show_icons=true&theme=ambient_gradient" alt="GitHub stats of Zibgame" loading="lazy" />
+      </div>
+    </section>
+
+    <section class="card" aria-labelledby="goal">
+      <h2 id="goal">🎯 Objectif</h2>
+      <p>Continuer à progresser, apprendre chaque jour et partager mes projets ici.</p>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Zibrian Cadinot · Fait avec ❤️ et GitHub Pages
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
