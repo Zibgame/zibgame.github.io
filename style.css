@@ -112,3 +112,16 @@ footer {
     font-size: 14px;
     color: var(--muted);
 }
+
+a {
+    position: relative;
+    color: #0077b6;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+  }
+  
+  a:hover {
+    color: #0096c7;
+    text-shadow: 0 0 4px rgba(0, 150, 199, 0.35);
+  }
