@@ -3,165 +3,235 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Developer Portfolio — Zibrian Cadinot</title>
+  <title>Zibrian Cadinot — Developer Portfolio</title>
   <meta name="description" content="Portfolio of Zibrian Cadinot, 42 School student and developer." />
-  <link rel="stylesheet" href="style.css">
-  <script src="vim-nav.js"></script>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div class="wrap" style="position: relative; z-index: 1;">
+<!-- ══ BOOT SCREEN ══ -->
+<div id="boot-screen">
+  <div class="boot-line boot-info" style="animation-delay:0.0s">[ BIOS ] Initializing portfolio kernel v2.0...</div>
+  <div class="boot-line boot-ok"   style="animation-delay:0.3s">[ OK ] Memory check: 42_School projects loaded</div>
+  <div class="boot-line boot-ok"   style="animation-delay:0.6s">[ OK ] Mounting /dev/skills → C, C++, Python, Vim, Linux</div>
+  <div class="boot-line boot-ok"   style="animation-delay:0.9s">[ OK ] Network interface: GitHub / LinkedIn UP</div>
+  <div class="boot-line boot-warn" style="animation-delay:1.2s">[ WARN ] Passion for game dev detected — proceed with caution</div>
+  <div class="boot-line boot-ok"   style="animation-delay:1.5s">[ OK ] All systems nominal. Starting UI...</div>
+  <div class="boot-line boot-info" style="animation-delay:1.8s">[ SYS ] Welcome, visitor. // cadinotzibrian@gmail.com</div>
+</div>
 
-    <header class="card">
-      <div class="title">
-        <div class="avatar">🛠️</div>
-        <div>
-          <h1>Zibrian Cadinot</h1>
-          <p class="subtitle">
-            Hi! I'm <strong>Zibrian</strong>, currently studying at <strong>42 School</strong>.<br>
-            I build low-level systems, tools, and game-related projects.  
-          </p>
-        </div>
-      </div>
+<!-- ══ BACKGROUND FX ══ -->
+<canvas id="matrix-canvas"></canvas>
+<div class="cursor-glow" id="cursor-glow"></div>
 
-      <nav>
-        <a href="#projects">Projects</a> · 
-        <a href="#skills">Skills</a> ·
-        <a href="#contact">Contact</a>
-      </nav>
-    </header>
+<div class="wrap">
 
-    <section id="skills" class="card">
-      <h2>🛠️ Languages & Tools</h2>
-      <p class="subtitle">
-        Tools I use daily to build efficient, clean and performant software.
+  <!-- ══ HEADER ══ -->
+  <header class="card reveal">
+    <div class="card-bar"></div>
+    <div class="header-left">
+      <div class="prompt">sys / whoami</div>
+      <h1 class="ascii-name glitch" data-text="Zibrian Cadinot">Zibrian Cadinot</h1>
+      <p class="tagline">
+        <span class="hl">42 School</span> student &amp; systems developer ·
+        <span class="hl">C / C++ / Linux</span> · low-level &amp; CyberSecurity
       </p>
-      <br>
-      <div class="icons">
-        <div class="icon">
-          <img class="lang" data-url="https://en.wikipedia.org/wiki/C_(programming_language)"
-               src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="C">
-        </div>
-        <div class="icon">
-          <img class="lang" data-url="https://en.wikipedia.org/wiki/C%2B%2B"
-               src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="C++">
-        </div>
-        <div class="icon">
-          <img class="lang" data-url="https://www.python.org/"
-               src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python">
-        </div>
-        <div class="icon">
-          <img class="lang" data-url="https://www.vim.org/"
-               src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vim/vim-original.svg" alt="Vim">
-        </div>
-        <div class="icon">
-          <img class="lang" data-url="https://www.unrealengine.com/"
-               src="https://raw.githubusercontent.com/devicons/devicon/master/icons/unrealengine/unrealengine-original.svg" alt="Unreal">
-        </div>
-        <div class="icon">
-          <img class="lang" data-url="https://unity.com/"
-               src="https://raw.githubusercontent.com/devicons/devicon/master/icons/unity/unity-original.svg" alt="Unity">
-        </div>      
-        <div class="icon">
-          <img class="lang" data-url="https://godotengine.org/"
-               src="https://raw.githubusercontent.com/devicons/devicon/master/icons/godot/godot-original.svg" alt="Godot">
-        </div>
-        <div class="icon">
-          <img class="lang" data-url="https://kernel.org/"
-               src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="Linux">
-        </div>
-      </div>      
-    </section>
-
-    <section id="projects42" class="card">
-        <h2>🗂️ Projets 42</h2>
-        <p class="subtitle">Main projects completed during my cursus at 42.</p>
-      
-        <ul class="projects">
-          <li><a href="https://github.com/Zibgame/42_Piscine">42 Piscine</a></li>
-          <li><a href="https://github.com/Zibgame/libft">Libft</a></li>
-          <li><a href="https://github.com/Zibgame/get_next_line">get_next_line</a></li>
-          <li><a href="https://github.com/Zibgame/ft_printf">ft_printf</a></li>
-          <li><a href="https://github.com/Zibgame/Born2beRoot">Born2beRoot</a></li>
-          <li><a href="https://github.com/Zibgame/minitalk">Minitalk</a></li>
-          <li><a href="https://github.com/Zibgame/so_long">So Long</a></li>
-          <li><a href="https://github.com/Zibgame/push_swap">Push Swap</a></li>
-          <li><a href="https://github.com/Zibgame/Philosophers">Philosophers</a></li>
-          <li><a href="https://github.com/Zibgame/Minishell">Minishell</a></li>
-          <li><a href="https://github.com/Zibgame/Minishell">Minishell</a></li>
-          <li><a href="https://github.com/Pixyde/cub3d">CUBE-3D</a></li>
-          <li><a href="https://github.com/Zibgame/42_cpp">42-C++</a></li>
-          <li><a href="https://github.com/Zibgame/NetPractice">NetPractice</a></li>
-          <li><a href="https://github.com/eyjvw/ft_transcendence">Transcendence</a></li>
-        </ul>
-      </section>
-      
-      <section id="other-projects" class="card">
-        <h2><img src="gif/fuse.gif" width="30"> Others Projects</h2>
-        <p class="subtitle">Small tools, configs and low-level experiments.</p>
-      
-        <ul class="projects">
-          <li><a href="https://github.com/Zibgame/calculator-app"> Lite_Calculator_App</a></li>
-          <li><a href="https://github.com/Zibgame/zim"> Zim </a></li>
-          <li><a href="https://github.com/Zibgame/ft_randint"> ft_randint</a></li>
-          <li><a href="https://github.com/Zibgame/asm-lib"> Asm Lib</a></li>
-          <li><a href="https://github.com/Zibgame/zsh-config"> Zsh Config</a></li>
-          <li><a href="https://github.com/Zibgame/Vim-config"> Vim Config</a></li>
-          <li><a href="https://github.com/Zibgame/Nvim-Config"> Neovim Config</a></li>
-        </ul>
-      </section>
-
-    <section id="stats" class="card">
-      <h2>📊 GitHub Stats</h2>
-      <br>
-      <div class="stats-row">
-        <img class="big" src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Zibgame&theme=default" alt="GitHub Profile Summary">
-        <img class="small" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Zibgame&theme=default" alt="Languages Used">
+      <div class="status-line">
+        <div class="badge badge-green"><span class="dot"></span> Available</div>
+        <div class="badge badge-cyan">42 LeHavre</div>
+        <div class="badge badge-blue">Open to collab</div>
       </div>
-    </section>
+    </div>
+    <nav>
+      <a href="#skills">Skills</a>
+      <a href="#projects42">42 Projects</a>
+      <a href="#other-projects">Others</a>
+      <a href="#stats">Stats</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-    <section id="Profile" class="card">
-      <h2>🌐 42 profile</h2>
-      <br>
-      <div class="stats-row">
-        <img src="https://badge.mediaplus.ma/binary/zcadinot?1337Badge=off&UM6P=off" alt="zcadinot" style="height: 40%; width: 40%; object-fit: cover;">
-      </div>
-    </section>
-    
-    <section id="contact" class="card">
-      <h2>📬 Contact Me</h2>
-      <p class="subtitle">Feel free to reach out for opportunities or collaborations.</p>
+  <!-- ══ SKILLS ══ -->
+  <section id="skills" class="card reveal">
+    <div class="card-bar"></div>
+    <div class="prompt">cat /proc/skills</div>
+    <div class="sec-title"><span class="icon-title">⚙</span> Languages &amp; Tools</div>
+    <p class="subtitle" style="margin-bottom:18px">Tools I use daily to build efficient, clean and performant software.</p>
+    <div class="skills-grid">
+      <a class="skill-chip" href="https://en.wikipedia.org/wiki/C_(programming_language)" target="_blank">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="C">
+        <span>C</span>
+      </a>
+      <a class="skill-chip" href="https://en.wikipedia.org/wiki/C%2B%2B" target="_blank">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="C++">
+        <span>C++</span>
+      </a>
+      <a class="skill-chip" href="https://www.python.org/" target="_blank">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python">
+        <span>Python</span>
+      </a>
+      <a class="skill-chip" href="https://www.vim.org/" target="_blank">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vim/vim-original.svg" alt="Vim">
+        <span>Vim</span>
+      </a>
+      <a class="skill-chip" href="https://www.unrealengine.com/" target="_blank">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/unrealengine/unrealengine-original.svg" alt="Unreal">
+        <span>Unreal</span>
+      </a>
+      <a class="skill-chip" href="https://unity.com/" target="_blank">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/unity/unity-original.svg" alt="Unity">
+        <span>Unity</span>
+      </a>
+      <a class="skill-chip" href="https://godotengine.org/" target="_blank">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/godot/godot-original.svg" alt="Godot">
+        <span>Godot</span>
+      </a>
+      <a class="skill-chip" href="https://kernel.org/" target="_blank">
+        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="Linux">
+        <span>Linux</span>
+      </a>
+    </div>
+  </section>
 
-      <ul class="projects">
-        <li><a target="_blank" href="mailto:cadinotzibrian@gmail.com">📧 Email me</a></li>
-        <li><a target="_blank" href="https://github.com/Zibgame">🐙 GitHub Profile</a></li>
-        <li><a target="_blank" href="https://www.linkedin.com/in/zibrian-cadinot-202834399/">💼 LinkedIn </a></li>
-      </ul>
-    </section>
+  <!-- ══ 42 PROJECTS ══ -->
+  <section id="projects42" class="card reveal">
+    <div class="card-bar"></div>
+    <div class="prompt">ls ~/42/cursus</div>
+    <div class="sec-title"><span class="icon-title">🗂</span> 42 School Projects</div>
+    <p class="subtitle" style="margin-bottom:18px">Main projects completed during my cursus at 42.</p>
+    <div class="projects-grid">
+      <a class="proj-item" href="https://github.com/Zibgame/42_Piscine" target="_blank">
+        <span>42 Piscine</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/libft" target="_blank">
+        <span>Libft</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/get_next_line" target="_blank">
+        <span>get_next_line</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/ft_printf" target="_blank">
+        <span>ft_printf</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/Born2beRoot" target="_blank">
+        <span>Born2beRoot</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/minitalk" target="_blank">
+        <span>Minitalk</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/so_long" target="_blank">
+        <span>So Long</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/push_swap" target="_blank">
+        <span>Push Swap</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/Philosophers" target="_blank">
+        <span>Philosophers</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/Minishell" target="_blank">
+        <span>Minishell</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Pixyde/cub3d" target="_blank">
+        <span>CUBE-3D</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/42_cpp" target="_blank">
+        <span>42-C++</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/NetPractice" target="_blank">
+        <span>NetPractice</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/eyjvw/ft_transcendence" target="_blank">
+        <span>Transcendence</span><span class="proj-arrow">→</span>
+      </a>
+    </div>
+  </section>
 
-    <footer>
-      © <span id="year"></span> Zibrian Cadinot
-    </footer>
+  <!-- ══ PERSONAL PROJECTS ══ -->
+  <section id="other-projects" class="card reveal">
+    <div class="card-bar"></div>
+    <div class="prompt">ls ~/projects/personal</div>
+    <div class="sec-title"><span class="icon-title">🔧</span> Personal Projects</div>
+    <p class="subtitle" style="margin-bottom:18px">Small tools, configs and low-level experiments.</p>
+    <div class="projects-grid">
+      <a class="proj-item" href="https://github.com/Zibgame/calculator-app" target="_blank">
+        <span>Lite Calculator App</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/zim" target="_blank">
+        <span>Zim</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/ft_randint" target="_blank">
+        <span>ft_randint</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/asm-lib" target="_blank">
+        <span>Asm Lib</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/zsh-config" target="_blank">
+        <span>Zsh Config</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/Vim-config" target="_blank">
+        <span>Vim Config</span><span class="proj-arrow">→</span>
+      </a>
+      <a class="proj-item" href="https://github.com/Zibgame/Nvim-Config" target="_blank">
+        <span>Neovim Config</span><span class="proj-arrow">→</span>
+      </a>
+    </div>
+  </section>
 
-  </div>
+  <!-- ══ GITHUB STATS ══ -->
+  <section id="stats" class="card reveal">
+    <div class="card-bar"></div>
+    <div class="prompt">curl api.github.com/users/Zibgame/stats</div>
+    <div class="sec-title"><span class="icon-title">📊</span> GitHub Stats</div>
+    <div class="stats-row">
+      <img
+        src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Zibgame&theme=holi"
+        alt="Languages breakdown for Zibgame"
+      />
+      <img
+        src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Zibgame&theme=holi"
+        alt="GitHub profile summary for Zibgame"
+      />
+    </div>
+  </section>
 
-  <section class="card reveal">
+  <!-- ══ CONTACT ══ -->
+  <section id="contact" class="card reveal">
+    <div class="card-bar"></div>
+    <div class="prompt">cat ~/contact.txt</div>
+    <div class="sec-title"><span class="icon-title">📡</span> Contact</div>
+    <p class="subtitle" style="margin-bottom:18px">Feel free to reach out for opportunities or collaborations.</p>
+    <div class="contact-grid">
+      <a class="contact-item" href="mailto:cadinotzibrian@gmail.com" target="_blank">
+        <span class="c-icon">📧</span>
+        <div> 
+          <div class="contact-label" data-color="green">EMAIL</div>
+          <div class="contact-value">cadinotzibrian@gmail.com</div>
+        </div>
+      </a>
+      <a class="contact-item" href="https://github.com/Zibgame" target="_blank">
+        <span class="c-icon">🐙</span>
+        <div>
+          <div class="contact-label" data-color="cyan">GITHUB</div>
+          <div class="contact-value">github.com/Zibgame</div>
+        </div>
+      </a>
+      <a class="contact-item" href="https://www.linkedin.com/in/zibrian-cadinot-202834399/" target="_blank">
+        <span class="c-icon">💼</span>
+        <div>
+          <div class="contact-label" data-color="blue">LINKEDIN</div>
+          <div class="contact-value">Zibrian Cadinot</div>
+        </div>
+      </a>
+    </div>
+  </section>
 
-  <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
-  </script>
+  <footer>
+    <span class="ft-green">$</span> echo "© <span id="year"></span> Zibrian Cadinot"
+    &nbsp;|&nbsp; Built with ☕ &amp; passion at <span class="ft-green">42</span>
+  </footer>
 
-<div class="mouse-shadow"></div>
-<script src="mouseShadow.js"></script>
+</div><!-- /wrap -->
 
-
-<script>
-    document.querySelectorAll(".lang").forEach(icon => {
-      icon.addEventListener("click", () => {
-        window.open(icon.dataset.url, "_blank");
-      });
-    });
-  </script>
-  
+<script src="vim-nav.js"></script>
+<script src="main.js"></script>
 </body>
 </html>
