@@ -1,16 +1,21 @@
-# zibgame.github.io
+# Zibrian Cadinot — Portfolio
 
-➡️ **Open the website:**
-[https://zibgame.github.io](https://zibgame.github.io)
+Static GitHub Pages portfolio focused on cybersecurity, Windows internals, systems programming and my work at 42 Le Havre.
 
-Simple personal portfolio hosted with GitHub Pages.
+## Features
 
-## Stack
+- 48 public projects indexed across offensive research, blue team / infrastructure, low-level systems, artificial intelligence, 42 cursus and developer tools
+- Searchable and filterable project archive
+- Interactive project-distribution graph and GitHub activity cards
+- Responsive layout, keyboard command palette and optional Vim-style navigation
+- Reduced-motion support and accessible semantic structure
 
-* HTML
-* CSS
-* JavaScript
+The site is intentionally dependency-free: open `index.html` directly or serve the directory with any static HTTP server.
 
-## Run locally
+## Keyboard shortcuts
 
-Open `index.html` in your browser.
+- `Ctrl+K`: open the command palette
+- `/`: focus project search
+- `j` / `k`: scroll
+- `h` / `l`: previous or next section
+- `gg` / `G`: top or bottom

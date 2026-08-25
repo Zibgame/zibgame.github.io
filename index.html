@@ -1,238 +1,239 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Zibrian Cadinot — Developer Portfolio</title>
-  <meta name="description" content="Portfolio of Zibrian Cadinot, 42 School student and developer." />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#050807">
+  <meta name="description" content="Zibrian Cadinot — cybersecurity, low-level systems and C/C++ developer at 42 Le Havre.">
+  <meta property="og:title" content="Zibrian Cadinot — Cybersecurity & Systems">
+  <meta property="og:description" content="Security research, Windows internals, systems programming and selected work from 42 Le Havre.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zibgame.github.io/">
+  <meta property="og:image" content="https://zibgame.github.io/icon.png">
+  <title>Zibrian Cadinot — Cybersecurity & Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <div class="page-top" id="page-top" aria-hidden="true"></div>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- ══ BOOT SCREEN ══ -->
-<div id="boot-screen">
-  <div class="boot-line boot-info" style="animation-delay:0.0s">[ BIOS ] Initializing portfolio kernel v2.0...</div>
-  <div class="boot-line boot-ok"   style="animation-delay:0.3s">[ OK ] Memory check: 42_School projects loaded</div>
-  <div class="boot-line boot-ok"   style="animation-delay:0.6s">[ OK ] Mounting /dev/skills → C, C++, Python, Vim, Linux</div>
-  <div class="boot-line boot-ok"   style="animation-delay:0.9s">[ OK ] Network interface: GitHub / LinkedIn UP</div>
-  <div class="boot-line boot-warn" style="animation-delay:1.2s">[ WARN ] Passion for game dev detected — proceed with caution</div>
-  <div class="boot-line boot-ok"   style="animation-delay:1.5s">[ OK ] All systems nominal. Starting UI...</div>
-  <div class="boot-line boot-info" style="animation-delay:1.8s">[ SYS ] Welcome, visitor. // cadinotzibrian@gmail.com</div>
-</div>
-
-<!-- ══ BACKGROUND FX ══ -->
-<canvas id="matrix-canvas"></canvas>
-<div class="cursor-glow" id="cursor-glow"></div>
-
-<div class="wrap">
-
-  <!-- ══ HEADER ══ -->
-  <header class="card reveal">
-    <div class="card-bar"></div>
-    <div class="header-left">
-      <div class="prompt">sys / whoami</div>
-      <h1 class="ascii-name glitch" data-text="Zibrian Cadinot">Zibrian Cadinot</h1>
-      <p class="tagline">
-        <span class="hl">42 School</span> student &amp; systems developer ·
-        <span class="hl">C / C++ / Linux</span> · low-level &amp; CyberSecurity
-      </p>
-      <div class="status-line">
-        <div class="badge badge-green"><span class="dot"></span> Available</div>
-        <div class="badge badge-cyan">42 LeHavre</div>
-        <div class="badge badge-blue">Open to collab</div>
-      </div>
+  <div id="boot-screen" class="boot-screen" aria-hidden="true">
+    <div class="boot-shell">
+      <div class="boot-head"><span>zc://portfolio</span><span>secure boot</span></div>
+      <div class="boot-output" id="boot-output"></div>
+      <button class="boot-skip" id="boot-skip" type="button">[ skip ]</button>
     </div>
-    <nav>
-      <a href="#skills">Skills</a>
-      <a href="#projects42">42 Projects</a>
-      <a href="#other-projects">Others</a>
+  </div>
+
+  <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="screen-grid" aria-hidden="true"></div>
+
+  <header class="topbar" id="top">
+    <a class="brand" href="#page-top" aria-label="Back to top">
+      <span class="brand-mark">ZC</span>
+      <span class="brand-copy"><strong>Zibrian Cadinot</strong><small>security / systems</small></span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#work">Projects <sup>48</sup></a>
+      <a href="#stack">Stack</a>
       <a href="#stats">Stats</a>
+      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
+    <button class="command-trigger" id="command-trigger" type="button" aria-label="Open command menu">
+      <span>Command</span><kbd>Ctrl K</kbd>
+    </button>
   </header>
 
-  <!-- ══ SKILLS ══ -->
-  <section id="skills" class="card reveal">
-    <div class="card-bar"></div>
-    <div class="prompt">cat /proc/skills</div>
-    <div class="sec-title"><span class="icon-title">⚙</span> Languages &amp; Tools</div>
-    <p class="subtitle" style="margin-bottom:18px">Tools I use daily to build efficient, clean and performant software.</p>
-    <div class="skills-grid">
-      <a class="skill-chip" href="https://en.wikipedia.org/wiki/C_(programming_language)" target="_blank">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt="C">
-        <span>C</span>
-      </a>
-      <a class="skill-chip" href="https://en.wikipedia.org/wiki/C%2B%2B" target="_blank">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt="C++">
-        <span>C++</span>
-      </a>
-      <a class="skill-chip" href="https://www.python.org/" target="_blank">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt="Python">
-        <span>Python</span>
-      </a>
-      <a class="skill-chip" href="https://www.vim.org/" target="_blank">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vim/vim-original.svg" alt="Vim">
-        <span>Vim</span>
-      </a>
-      <a class="skill-chip" href="https://www.unrealengine.com/" target="_blank">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/unrealengine/unrealengine-original.svg" alt="Unreal">
-        <span>Unreal</span>
-      </a>
-      <a class="skill-chip" href="https://unity.com/" target="_blank">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/unity/unity-original.svg" alt="Unity">
-        <span>Unity</span>
-      </a>
-      <a class="skill-chip" href="https://godotengine.org/" target="_blank">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/godot/godot-original.svg" alt="Godot">
-        <span>Godot</span>
-      </a>
-      <a class="skill-chip" href="https://kernel.org/" target="_blank">
-        <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt="Linux">
-        <span>Linux</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- ══ 42 PROJECTS ══ -->
-  <section id="projects42" class="card reveal">
-    <div class="card-bar"></div>
-    <div class="prompt">ls ~/42/cursus</div>
-    <div class="sec-title"><span class="icon-title">🗂</span> 42 School Projects</div>
-    <p class="subtitle" style="margin-bottom:18px">Main projects completed during my cursus at 42.</p>
-    <div class="projects-grid">
-      <a class="proj-item" href="https://github.com/Zibgame/42_Piscine" target="_blank">
-        <span>42 Piscine</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/libft" target="_blank">
-        <span>Libft</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/get_next_line" target="_blank">
-        <span>get_next_line</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/ft_printf" target="_blank">
-        <span>ft_printf</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/Born2beRoot" target="_blank">
-        <span>Born2beRoot</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/minitalk" target="_blank">
-        <span>Minitalk</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/so_long" target="_blank">
-        <span>So Long</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/push_swap" target="_blank">
-        <span>Push Swap</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/Philosophers" target="_blank">
-        <span>Philosophers</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/Minishell" target="_blank">
-        <span>Minishell</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Pixyde/cub3d" target="_blank">
-        <span>CUBE-3D</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/42_cpp" target="_blank">
-        <span>42-C++</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/NetPractice" target="_blank">
-        <span>NetPractice</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/eyjvw/ft_transcendence" target="_blank">
-        <span>Transcendence</span><span class="proj-arrow">→</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- ══ PERSONAL PROJECTS ══ -->
-  <section id="other-projects" class="card reveal">
-    <div class="card-bar"></div>
-    <div class="prompt">ls ~/projects/personal</div>
-    <div class="sec-title"><span class="icon-title">🔧</span> Personal Projects</div>
-    <p class="subtitle" style="margin-bottom:18px">Small tools, configs and low-level experiments.</p>
-    <div class="projects-grid">
-      <a class="proj-item" href="https://github.com/Zibgame/calculator-app" target="_blank">
-        <span>Lite Calculator App</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/zim" target="_blank">
-        <span>Zim</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/ft_randint" target="_blank">
-        <span>ft_randint</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/asm-lib" target="_blank">
-        <span>Asm Lib</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/zsh-config" target="_blank">
-        <span>Zsh Config</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/Vim-config" target="_blank">
-        <span>Vim Config</span><span class="proj-arrow">→</span>
-      </a>
-      <a class="proj-item" href="https://github.com/Zibgame/Nvim-Config" target="_blank">
-        <span>Neovim Config</span><span class="proj-arrow">→</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- ══ GITHUB STATS ══ -->
-  <section id="stats" class="card reveal">
-    <div class="card-bar"></div>
-    <div class="prompt">curl api.github.com/users/Zibgame/stats</div>
-    <div class="sec-title"><span class="icon-title">📊</span> GitHub Stats</div>
-    <div class="stats-row">
-      <img
-        src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Zibgame&theme=holi"
-        alt="Languages breakdown for Zibgame"
-      />
-      <img
-        src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Zibgame&theme=holi"
-        alt="GitHub profile summary for Zibgame"
-      />
-    </div>
-  </section>
-
-  <!-- ══ CONTACT ══ -->
-  <section id="contact" class="card reveal">
-    <div class="card-bar"></div>
-    <div class="prompt">cat ~/contact.txt</div>
-    <div class="sec-title"><span class="icon-title">📡</span> Contact</div>
-    <p class="subtitle" style="margin-bottom:18px">Feel free to reach out for opportunities or collaborations.</p>
-    <div class="contact-grid">
-      <a class="contact-item" href="mailto:cadinotzibrian@gmail.com" target="_blank">
-        <span class="c-icon">📧</span>
-        <div> 
-          <div class="contact-label" data-color="green">EMAIL</div>
-          <div class="contact-value">cadinotzibrian@gmail.com</div>
+  <main id="main">
+    <section class="hero section-shell reveal" aria-labelledby="hero-title">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="status-pulse"></span> zibgame@42lehavre:~$ whoami</p>
+        <h1 id="hero-title"><span>Zibrian</span><br>Cadinot<span class="terminal-caret">_</span></h1>
+        <p class="hero-role">SECURITY RESEARCH // LOW-LEVEL // AI & DEV TOOLS</p>
+        <p class="hero-lead">I’m a 42 Le Havre student who learns by opening systems up, understanding what happens underneath, then building tools around it — from Windows security research to AI automation.</p>
+        <div class="hero-actions">
+          <a class="button button-primary magnetic" href="#work">Browse all 48 projects <span aria-hidden="true">↓</span></a>
+          <a class="button button-secondary magnetic" href="https://github.com/Zibgame" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
+          <a class="button button-ghost magnetic" href="mailto:zcadinot@student.42lehavre.fr">Contact <span aria-hidden="true">@</span></a>
         </div>
-      </a>
-      <a class="contact-item" href="https://github.com/Zibgame" target="_blank">
-        <span class="c-icon">🐙</span>
-        <div>
-          <div class="contact-label" data-color="cyan">GITHUB</div>
-          <div class="contact-value">github.com/Zibgame</div>
-        </div>
-      </a>
-      <a class="contact-item" href="https://www.linkedin.com/in/zibrian-cadinot-202834399/" target="_blank">
-        <span class="c-icon">💼</span>
-        <div>
-          <div class="contact-label" data-color="blue">LINKEDIN</div>
-          <div class="contact-value">Zibrian Cadinot</div>
-        </div>
-      </a>
-    </div>
-  </section>
+        <p class="ethics-note"><span>!</span> Security work is documented for controlled labs, education and authorized research.</p>
+      </div>
 
-  <footer>
-    <span class="ft-green">$</span> echo "© <span id="year"></span> Zibrian Cadinot"
-    &nbsp;|&nbsp; Built with ☕ &amp; passion at <span class="ft-green">42</span>
+      <aside class="terminal" aria-label="Profile terminal">
+        <div class="terminal-bar">
+          <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+          <span>/home/zibgame/session.log</span><span>tty1</span>
+        </div>
+        <div class="terminal-body">
+          <p><span class="prompt-char">┌─[zibgame@42]─[~/focus]</span></p>
+          <p><span class="prompt-char">└─$</span> tree -L 2</p>
+          <div class="terminal-result terminal-tree">.<br>├── cybersecurity<br>│&nbsp;&nbsp; ├── offensive_research<br>│&nbsp;&nbsp; └── blue_team<br>├── low_level<br>│&nbsp;&nbsp; ├── C_C++<br>│&nbsp;&nbsp; └── windows_internals<br>├── artificial_intelligence<br>└── 42_cursus</div>
+          <p><span class="prompt-char">└─$</span> git status --short</p>
+          <div class="terminal-result accent">48 repositories tracked<br>working tree: always learning <span class="terminal-caret">█</span></div>
+        </div>
+      </aside>
+
+      <div class="hero-metrics" aria-label="Profile highlights">
+        <div><strong>48</strong><span>projects indexed</span></div>
+        <div><strong>6</strong><span>project categories</span></div>
+        <div><strong>C / C++</strong><span>core languages</span></div>
+        <div><strong>42</strong><span>Le Havre</span></div>
+      </div>
+    </section>
+
+    <section class="section-shell project-console reveal" aria-labelledby="project-console-title">
+      <div class="console-command"><span class="section-index" id="project-console-title">00 / QUICK ACCESS</span><code>$ ./projects --category</code></div>
+      <div class="category-launcher" id="category-launcher">
+        <button type="button" data-jump-filter="offensive"><span>01</span><b>Offensive</b><small>10 repos</small></button>
+        <button type="button" data-jump-filter="defensive"><span>02</span><b>Blue team</b><small>6 repos</small></button>
+        <button type="button" data-jump-filter="systems"><span>03</span><b>Low-level</b><small>17 repos</small></button>
+        <button type="button" data-jump-filter="ai"><span>04</span><b>AI</b><small>4 repos</small></button>
+        <button type="button" data-jump-filter="tools"><span>05</span><b>Tools</b><small>22 repos</small></button>
+        <button type="button" data-jump-filter="school"><span>06</span><b>42 cursus</b><small>15 repos</small></button>
+      </div>
+    </section>
+
+    <section class="section-shell skills-console reveal" id="stack" aria-labelledby="skills-title">
+      <div class="console-section-head">
+        <div><span class="section-index">$ cat /proc/skills</span><h2 id="skills-title">Languages & tools</h2></div>
+        <p>What I actually use to build, break, inspect and automate.</p>
+      </div>
+      <div class="skill-grid">
+        <a class="skill-tile" href="https://en.wikipedia.org/wiki/C_(programming_language)" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt=""><b>C</b><small>systems</small></a>
+        <a class="skill-tile" href="https://isocpp.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/cplusplus/cplusplus-original.svg" alt=""><b>C++</b><small>low-level</small></a>
+        <a class="skill-tile" href="https://www.python.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg" alt=""><b>Python</b><small>AI / tools</small></a>
+        <a class="skill-tile" href="https://learn.microsoft.com/powershell/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/powershell/powershell-original.svg" alt=""><b>PowerShell</b><small>Windows</small></a>
+        <a class="skill-tile" href="https://kernel.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linux/linux-original.svg" alt=""><b>Linux</b><small>systems</small></a>
+        <a class="skill-tile" href="https://www.docker.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original.svg" alt=""><b>Docker</b><small>infra</small></a>
+        <a class="skill-tile" href="https://git-scm.com/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/git/git-original.svg" alt=""><b>Git</b><small>workflow</small></a>
+        <a class="skill-tile" href="https://www.vim.org/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vim/vim-original.svg" alt=""><b>Vim</b><small>editor</small></a>
+      </div>
+    </section>
+
+    <section class="section-shell work-section reveal" id="work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <div><p class="section-index">01 / PROJECT INDEX</p><h2 id="work-title">Everything I build.</h2></div>
+        <p>All 48 public repositories are visible here. Filter by discipline or search by project, language or keyword.</p>
+      </div>
+
+      <div class="archive-head">
+        <div><p class="section-index">$ ls ~/projects</p><h3>Project explorer <span class="archive-total">48 repositories</span></h3></div>
+        <label class="search-box">
+          <span aria-hidden="true">/</span>
+          <span class="sr-only">Search projects</span>
+          <input id="project-search" type="search" placeholder="Search project, language, keyword…" autocomplete="off">
+        </label>
+      </div>
+      <div class="filter-row" id="project-filters" aria-label="Filter projects"></div>
+      <p class="results-status" id="results-status" aria-live="polite"></p>
+      <div class="project-grid" id="project-grid"></div>
+      <button class="load-more" id="load-more" type="button">Show complete archive <span>+</span></button>
+
+      <div class="featured-head"><span class="section-index">PINNED / OFFENSIVE LAB</span><p>Six offensive-security projects selected from the full archive.</p></div>
+      <div class="featured-grid" id="featured-grid" aria-label="Featured projects"></div>
+    </section>
+
+    <section class="section-shell stats-section reveal" id="stats" aria-labelledby="stats-title">
+      <div class="section-heading">
+        <div><p class="section-index">02 / GITHUB TELEMETRY</p><h2 id="stats-title">The activity behind the work.</h2></div>
+        <p>Public contribution and language data from my GitHub profile.</p>
+      </div>
+      <div class="github-stat-grid">
+        <div class="github-stat"><span>REPOSITORIES</span><strong>50</strong><small>public on GitHub</small></div>
+        <div class="github-stat"><span>STARRED REPOS</span><strong>39</strong><small>saved on GitHub</small></div>
+        <div class="github-stat"><span>FOLLOWERS</span><strong>24</strong><small>GitHub network</small></div>
+        <a class="github-stat github-stat-link" href="https://github.com/Zibgame" target="_blank" rel="noreferrer"><span>PROFILE</span><strong>@Zibgame</strong><small>open on GitHub ↗</small></a>
+      </div>
+      <div class="distribution-wrap">
+        <div class="distribution-copy"><span class="section-index">PROJECT DISTRIBUTION</span><h3>Where the work lives.</h3><p>Projects can belong to several research tracks. Select a bar to open that category in the project explorer.</p></div>
+        <div class="distribution-chart" id="distribution-chart" aria-label="Project distribution by category"></div>
+      </div>
+      <div class="github-cards">
+        <img src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Zibgame&theme=github_dark" alt="Languages used across Zibgame repositories" loading="lazy">
+        <img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Zibgame&theme=github_dark" alt="Zibgame GitHub activity summary" loading="lazy">
+      </div>
+    </section>
+
+    <section class="section-shell stack-section reveal" aria-labelledby="stack-title">
+      <div class="section-heading">
+        <div><p class="section-index">03 / CAPABILITIES</p><h2 id="stack-title">Built close to the metal.</h2></div>
+        <p>My work sits where security research, software engineering and system behaviour overlap.</p>
+      </div>
+      <div class="capability-grid">
+        <article class="capability-card red">
+          <span class="card-code">0x01</span><h3>Offensive research</h3>
+          <p>Controlled research into Windows execution, process memory, persistence, anti-debugging and privilege boundaries.</p>
+          <ul><li>Windows internals</li><li>Reverse engineering</li><li>Network tooling</li></ul>
+        </article>
+        <article class="capability-card blue">
+          <span class="card-code">0x02</span><h3>Defense & infrastructure</h3>
+          <p>Networking, secure service deployment, Linux administration and understanding attack paths to improve defenses.</p>
+          <ul><li>Linux / Docker</li><li>TCP/IP</li><li>Hardening</li></ul>
+        </article>
+        <article class="capability-card green">
+          <span class="card-code">0x03</span><h3>Systems engineering</h3>
+          <p>Performance-aware tooling in C and C++, from terminal editors and debuggers to assembly and virtualization.</p>
+          <ul><li>C / C++</li><li>x86_64 / UEFI</li><li>Python / Shell</li></ul>
+        </article>
+      </div>
+      <div class="stack-line" aria-label="Technology stack">
+        <span>C</span><span>C++</span><span>Python</span><span>Assembly</span><span>PowerShell</span><span>Linux</span><span>Docker</span><span>Git</span><span>Vim</span>
+      </div>
+    </section>
+
+    <section class="section-shell about-section reveal" id="about" aria-labelledby="about-title">
+      <div class="about-title-wrap"><p class="section-index">04 / PROFILE</p><h2 id="about-title">Curiosity with a method.</h2></div>
+      <div class="about-copy">
+        <p>I’m Zibrian, a developer and cybersecurity student at 42 Le Havre. I learn by building: reducing complex systems to small experiments, observing what really happens, then turning that knowledge into focused tools.</p>
+        <p>The portfolio is intentionally broad. School projects built my foundations in Unix, concurrency and networking; personal work pushes further into security research, Windows internals, automation and developer experience.</p>
+        <div class="principles">
+          <div><span>01</span><b>Understand before abstracting.</b></div>
+          <div><span>02</span><b>Build small, verify deeply.</b></div>
+          <div><span>03</span><b>Research responsibly.</b></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell contact-section reveal" id="contact" aria-labelledby="contact-title">
+      <div>
+        <p class="section-index">05 / CONTACT</p>
+        <h2 id="contact-title">Let’s build something<br><em>worth dissecting.</em></h2>
+      </div>
+      <div class="contact-panel">
+        <p>Open to internships, collaborations and conversations around cybersecurity or low-level engineering.</p>
+        <a class="email-link magnetic" href="mailto:zcadinot@student.42lehavre.fr">zcadinot@student.42lehavre.fr <span>↗</span></a>
+        <div class="social-row">
+          <a class="social-link" href="https://github.com/Zibgame" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" alt=""><span><b>GitHub</b><small>@Zibgame</small></span><i>↗</i></a>
+          <a class="social-link" href="https://www.linkedin.com/in/zibrian-cadinot-202834399/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" alt=""><span><b>LinkedIn</b><small>Zibrian Cadinot</small></span><i>↗</i></a>
+          <a class="social-link" href="https://profile.hackthebox.com/profile/019d539a-c442-70f1-b6c9-1231e7ac1b94" target="_blank" rel="noreferrer"><span class="social-monogram">HTB</span><span><b>Hack The Box</b><small>Security profile</small></span><i>↗</i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <a class="quick-contact" href="mailto:zcadinot@student.42lehavre.fr" aria-label="Email Zibrian"><span>ONLINE</span> @ contact</a>
+
+  <footer class="section-shell footer">
+    <span>© <span id="year"></span> Zibrian Cadinot</span>
+    <span class="footer-status"><i></i> All systems nominal</span>
+    <span>Le Havre, France · <span id="local-time">--:-- CET</span></span>
   </footer>
 
-</div><!-- /wrap -->
+  <dialog class="command-dialog" id="command-dialog" aria-labelledby="command-title">
+    <div class="command-head"><span id="command-title">Quick navigation</span><button id="command-close" type="button" aria-label="Close command menu">Esc</button></div>
+    <label class="command-search"><span>›</span><input id="command-input" type="text" placeholder="Type a command…" autocomplete="off"></label>
+    <div class="command-list" id="command-list"></div>
+    <p class="command-hint"><span>↑↓ navigate</span><span>↵ select</span><span>esc close</span></p>
+  </dialog>
 
-<script src="vim-nav.js"></script>
-<script src="main.js"></script>
+  <script src="vim-nav.js"></script>
+  <script src="main.js"></script>
 </body>
 </html>

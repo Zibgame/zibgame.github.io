@@ -1,100 +1,103 @@
-// ============================================================
-// vim-nav.js — Vim-style keyboard navigation
-// ============================================================
+// Optional Vim-style navigation: j/k scroll, h/l sections, gg/G edges, zt/zz/zb alignment.
+let vimPendingKey = "";
+let vimPendingTimer = 0;
+let vimTargetY = window.scrollY;
+let vimScrollFrame = 0;
 
-let scrolling = false;
-let gPressed  = false;
-let zPressed  = false;
+function vimScrollTo(targetY) {
+  const maxY = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
+  vimTargetY = Math.max(0, Math.min(targetY, maxY));
+  if (vimScrollFrame) return;
 
-function smoothScrollTo(targetY, duration = 200) {
-  if (scrolling) return;
-  scrolling = true;
-  const startY = window.scrollY;
-  const diff   = targetY - startY;
-  let start    = null;
-
-  function animate(t) {
-    if (!start) start = t;
-    const progress = Math.min((t - start) / duration, 1);
-    const ease     = 1 - Math.pow(1 - progress, 3);
-    window.scrollTo(0, startY + diff * ease);
-    if (progress < 1) requestAnimationFrame(animate);
-    else scrolling = false;
+  function step() {
+    const current = window.scrollY;
+    const distance = vimTargetY - current;
+    if (Math.abs(distance) < 2.5) {
+      window.scrollTo(0, vimTargetY);
+      document.documentElement.style.scrollBehavior = "";
+      vimScrollFrame = 0;
+      return;
+    }
+    document.documentElement.style.scrollBehavior = "auto";
+    window.scrollTo(0, current + distance * .24);
+    vimScrollFrame = requestAnimationFrame(step);
   }
-  requestAnimationFrame(animate);
+  vimScrollFrame = requestAnimationFrame(step);
 }
 
-function smoothScroll(deltaY) {
-  smoothScrollTo(window.scrollY + deltaY);
+function vimScrollBy(distance) {
+  if (!vimScrollFrame) vimTargetY = window.scrollY;
+  vimScrollTo(vimTargetY + distance);
 }
 
-function nearestSection(pos) {
-  const sections = [...document.querySelectorAll("section, header")];
-  let closest = sections[0];
-  for (let s of sections) {
-    if (Math.abs(s.offsetTop - pos) < Math.abs(closest.offsetTop - pos)) closest = s;
-  }
-  return closest;
+function vimSections() {
+  return [...document.querySelectorAll("main > section")];
 }
 
-document.addEventListener("keydown", function(e) {
-  if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+function nearestVimSection(position = window.scrollY) {
+  return vimSections().reduce((closest, section) =>
+    Math.abs(section.offsetTop - position) < Math.abs(closest.offsetTop - position) ? section : closest
+  );
+}
 
-  const speed    = 200;
+function setVimPending(key) {
+  clearTimeout(vimPendingTimer);
+  vimPendingKey = key;
+  vimPendingTimer = setTimeout(() => { vimPendingKey = ""; }, 450);
+}
+
+document.addEventListener("keydown", event => {
+  const target = event.target;
+  if (target.matches("input, textarea, select, [contenteditable='true']") || document.querySelector("dialog[open]")) return;
+  if (event.altKey || event.metaKey) return;
+
+  const key = event.key;
+  if (event.ctrlKey && !["d", "u", "f", "b"].includes(key)) return;
   const halfPage = window.innerHeight / 2;
-  const fullPage = window.innerHeight;
+  const fullPage = window.innerHeight * .9;
 
-  // gg → top
-  if (e.key === "g") {
-    if (gPressed) { smoothScrollTo(0); gPressed = false; }
-    else { gPressed = true; setTimeout(() => gPressed = false, 250); }
+  if (vimPendingKey === "g" && key === "g") {
+    event.preventDefault();
+    vimPendingKey = "";
+    vimScrollTo(0);
     return;
   }
-  // G → bottom
-  if (e.key === "G") { smoothScrollTo(document.body.scrollHeight); return; }
 
-  // j / k
-  if (e.key === "j") smoothScroll(speed);
-  if (e.key === "k") smoothScroll(-speed);
+  if (vimPendingKey === "z" && ["t", "z", "b"].includes(key)) {
+    event.preventDefault();
+    const section = nearestVimSection();
+    const offsets = {
+      t: section.offsetTop,
+      z: section.offsetTop - window.innerHeight / 2 + section.offsetHeight / 2,
+      b: section.offsetTop - window.innerHeight + section.offsetHeight
+    };
+    vimPendingKey = "";
+    vimScrollTo(offsets[key]);
+    return;
+  }
 
-  // h / l → prev/next section
-  if (e.key === "h") {
-    const sections = [...document.querySelectorAll("section, header")];
-    const pos = window.scrollY;
-    for (let i = sections.length - 1; i >= 0; i--) {
-      if (sections[i].offsetTop < pos - 10) { smoothScrollTo(sections[i].offsetTop); return; }
+  if (key === "g" || key === "z") {
+    setVimPending(key);
+    return;
+  }
+
+  if (key === "G") { event.preventDefault(); vimScrollTo(document.documentElement.scrollHeight); return; }
+  if (key === "j") { event.preventDefault(); vimScrollBy(150); return; }
+  if (key === "k") { event.preventDefault(); vimScrollBy(-150); return; }
+  if (event.ctrlKey && key === "d") { event.preventDefault(); vimScrollBy(halfPage); return; }
+  if (event.ctrlKey && key === "u") { event.preventDefault(); vimScrollBy(-halfPage); return; }
+  if (event.ctrlKey && key === "f") { event.preventDefault(); vimScrollBy(fullPage); return; }
+  if (event.ctrlKey && key === "b") { event.preventDefault(); vimScrollBy(-fullPage); return; }
+
+  if (key === "h" || key === "l") {
+    const sections = vimSections();
+    const current = window.scrollY;
+    const destination = key === "h"
+      ? [...sections].reverse().find(section => section.offsetTop < current - 24)
+      : sections.find(section => section.offsetTop > current + 24);
+    if (destination) {
+      event.preventDefault();
+      vimScrollTo(destination.offsetTop);
     }
-  }
-  if (e.key === "l") {
-    const sections = [...document.querySelectorAll("section, header")];
-    const pos = window.scrollY;
-    for (let s of sections) {
-      if (s.offsetTop > pos + 10) { smoothScrollTo(s.offsetTop); return; }
-    }
-  }
-
-  // Ctrl+d / Ctrl+u
-  if (e.ctrlKey && e.key === "d") { smoothScroll(halfPage);  return; }
-  if (e.ctrlKey && e.key === "u") { smoothScroll(-halfPage); return; }
-
-  // Ctrl+f / Ctrl+b
-  if (e.ctrlKey && e.key === "f") { smoothScroll(fullPage);  return; }
-  if (e.ctrlKey && e.key === "b") { smoothScroll(-fullPage); return; }
-
-  // zt / zz / zb
-  if (e.key === "z") { zPressed = true; setTimeout(() => zPressed = false, 250); return; }
-  if (zPressed && e.key === "t") {
-    smoothScrollTo(nearestSection(window.scrollY).offsetTop);
-    zPressed = false; return;
-  }
-  if (zPressed && e.key === "z") {
-    const sec = nearestSection(window.scrollY);
-    smoothScrollTo(sec.offsetTop - window.innerHeight / 2 + sec.offsetHeight / 2);
-    zPressed = false; return;
-  }
-  if (zPressed && e.key === "b") {
-    const sec = nearestSection(window.scrollY);
-    smoothScrollTo(sec.offsetTop - window.innerHeight + sec.offsetHeight);
-    zPressed = false; return;
   }
 });
