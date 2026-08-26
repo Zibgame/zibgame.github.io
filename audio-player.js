@@ -21,37 +21,63 @@
 
   const tracks = [
     {
-      name: "Signal Drift",
-      mode: "ambient / 76 bpm",
-      bpm: 76,
+      name: "Aura Override",
+      mode: "hacker aura / 72 bpm",
+      bpm: 72,
       root: 55,
-      bass: [0, null, 0, null, 7, null, 5, null, 0, null, 3, null, 7, null, 10, null],
-      lead: [12, null, 19, null, 15, null, 22, null, 12, null, 17, null, 19, null, 15, null],
-      chords: [[0, 7, 12], [5, 12, 15], [3, 10, 15], [7, 14, 17]]
+      bassWave: "sine",
+      leadWave: "sine",
+      bassCutoff: 430,
+      chordEvery: 8,
+      kickSteps: [0, 8],
+      snareSteps: [],
+      hatEvery: 0,
+      bass: [0, null, null, null, 7, null, null, null, 5, null, null, null, 3, null, 7, null],
+      lead: [19, null, null, 22, null, null, 15, null, 17, null, null, 19, null, 15, null, 12],
+      chords: [[0, 7, 12, 19], [5, 12, 17, 21], [3, 10, 15, 22], [7, 14, 17, 24]]
     },
     {
-      name: "Midnight Compile",
-      mode: "lo-fi / 84 bpm",
-      bpm: 84,
-      root: 65.41,
-      bass: [0, null, 0, 7, null, 5, null, 7, 0, null, 3, null, 5, null, 7, null],
-      lead: [19, null, 15, null, 12, 15, null, 17, 19, null, 22, null, 17, 15, null, 12],
-      chords: [[0, 3, 7], [5, 8, 12], [7, 10, 14], [3, 7, 10]]
+      name: "Root Access",
+      mode: "dark phonk / 98 bpm",
+      bpm: 98,
+      root: 49,
+      bassWave: "sawtooth",
+      leadWave: "square",
+      bassCutoff: 620,
+      chordEvery: 16,
+      kickSteps: [0, 3, 6, 8, 11, 14],
+      snareSteps: [4, 12],
+      hatEvery: 2,
+      bass: [0, null, 0, 7, null, 6, 5, null, 0, 0, null, 3, 5, null, 6, 7],
+      lead: [24, null, 19, 22, null, 18, null, 19, 24, null, 27, null, 22, 19, null, 18],
+      chords: [[0, 3, 7], [6, 9, 13]]
     },
     {
-      name: "Null Sector",
-      mode: "darkwave / 68 bpm",
-      bpm: 68,
-      root: 46.25,
-      bass: [0, null, null, 0, 6, null, null, 5, 0, null, 3, null, 6, null, 5, null],
-      lead: [12, null, 13, null, 18, null, 17, null, 12, null, 15, null, 18, null, 13, null],
-      chords: [[0, 6, 12], [5, 11, 15], [3, 9, 15], [6, 12, 17]]
+      name: "Zero-Day Run",
+      mode: "industrial / 116 bpm",
+      bpm: 116,
+      root: 43.65,
+      bassWave: "square",
+      leadWave: "sawtooth",
+      bassCutoff: 780,
+      chordEvery: 16,
+      kickSteps: [0, 2, 4, 6, 8, 10, 12, 14],
+      snareSteps: [4, 12],
+      hatEvery: 1,
+      bass: [0, 0, 12, 0, 6, 0, 5, 0, 0, 12, 0, 3, 6, 5, 3, 0],
+      lead: [12, 13, null, 18, 17, null, 13, 12, 24, null, 18, 17, null, 15, 13, null],
+      chords: [[0, 6, 12], [3, 9, 15]]
     }
   ];
 
   let audioContext;
   let analyser;
   let master;
+  let compressor;
+  let noiseBuffer;
+  let delayNode;
+  let delayFeedback;
+  let delayWet;
   let timer;
   let playing = false;
   let step = 0;
@@ -62,6 +88,7 @@
   volume.value = String(requestedVolume);
 
   const frequency = (root, semitones) => root * Math.pow(2, semitones / 12);
+  const volumeToGain = value => Math.pow(value / 100, 1.3) * 1.4;
 
   function setupAudio() {
     if (audioContext) return;
@@ -76,45 +103,89 @@
     analyser.fftSize = 128;
     analyser.smoothingTimeConstant = .82;
     master = audioContext.createGain();
-    master.gain.value = requestedVolume / 100 * .32;
-    master.connect(analyser);
+    compressor = audioContext.createDynamicsCompressor();
+    compressor.threshold.value = -20;
+    compressor.knee.value = 24;
+    compressor.ratio.value = 5;
+    compressor.attack.value = .004;
+    compressor.release.value = .22;
+    delayNode = audioContext.createDelay(.8);
+    delayFeedback = audioContext.createGain();
+    delayWet = audioContext.createGain();
+    delayNode.delayTime.value = .31;
+    delayFeedback.gain.value = .22;
+    delayWet.gain.value = .22;
+    noiseBuffer = audioContext.createBuffer(1, audioContext.sampleRate, audioContext.sampleRate);
+    const noiseData = noiseBuffer.getChannelData(0);
+    for (let index = 0; index < noiseData.length; index += 1) noiseData[index] = Math.random() * 2 - 1;
+    master.gain.value = volumeToGain(requestedVolume);
+    master.connect(compressor);
+    delayNode.connect(delayFeedback);
+    delayFeedback.connect(delayNode);
+    delayNode.connect(delayWet);
+    delayWet.connect(master);
+    compressor.connect(analyser);
     analyser.connect(audioContext.destination);
   }
 
-  function synth(freq, length, type = "triangle", gain = .05, cutoff = 1200, detune = 0) {
+  function synth(freq, length, type = "triangle", gain = .05, cutoff = 1200, detune = 0, space = 0, attack = .025) {
     const now = audioContext.currentTime;
     const oscillator = audioContext.createOscillator();
     const filter = audioContext.createBiquadFilter();
     const envelope = audioContext.createGain();
+    const send = audioContext.createGain();
     oscillator.type = type;
     oscillator.frequency.setValueAtTime(freq, now);
     oscillator.detune.value = detune;
     filter.type = "lowpass";
     filter.frequency.setValueAtTime(cutoff, now);
-    filter.Q.value = .7;
+    filter.Q.value = type === "sawtooth" ? 2.4 : .8;
     envelope.gain.setValueAtTime(.0001, now);
-    envelope.gain.exponentialRampToValueAtTime(gain, now + .025);
+    envelope.gain.exponentialRampToValueAtTime(gain, now + attack);
     envelope.gain.exponentialRampToValueAtTime(.0001, now + length);
+    send.gain.value = space;
     oscillator.connect(filter);
     filter.connect(envelope);
     envelope.connect(master);
+    if (space > 0) {
+      envelope.connect(send);
+      send.connect(delayNode);
+    }
     oscillator.start(now);
     oscillator.stop(now + length + .05);
   }
 
-  function kick() {
+  function kick(power = 1) {
     const now = audioContext.currentTime;
     const oscillator = audioContext.createOscillator();
     const envelope = audioContext.createGain();
     oscillator.type = "sine";
     oscillator.frequency.setValueAtTime(105, now);
     oscillator.frequency.exponentialRampToValueAtTime(42, now + .12);
-    envelope.gain.setValueAtTime(.08, now);
+    envelope.gain.setValueAtTime(.16 * power, now);
     envelope.gain.exponentialRampToValueAtTime(.0001, now + .16);
     oscillator.connect(envelope);
     envelope.connect(master);
     oscillator.start(now);
     oscillator.stop(now + .17);
+  }
+
+  function noiseHit(kind = "hat") {
+    const now = audioContext.currentTime;
+    const source = audioContext.createBufferSource();
+    const filter = audioContext.createBiquadFilter();
+    const envelope = audioContext.createGain();
+    const isSnare = kind === "snare";
+    source.buffer = noiseBuffer;
+    filter.type = "highpass";
+    filter.frequency.value = isSnare ? 1100 : 5700;
+    envelope.gain.setValueAtTime(isSnare ? .065 : .025, now);
+    envelope.gain.exponentialRampToValueAtTime(.0001, now + (isSnare ? .16 : .045));
+    source.connect(filter);
+    filter.connect(envelope);
+    envelope.connect(master);
+    source.start(now);
+    source.stop(now + (isSnare ? .17 : .05));
   }
 
   function playStep() {
@@ -123,12 +194,19 @@
     const bassNote = track.bass[step % track.bass.length];
     const leadNote = track.lead[step % track.lead.length];
 
-    if (bassNote !== null) synth(frequency(track.root, bassNote), beatLength * .7, "triangle", .055, 480);
-    if (leadNote !== null) synth(frequency(track.root, leadNote), beatLength * .42, "sine", .022, 1600, step % 4 === 0 ? -5 : 5);
-    if (step % 4 === 0) kick();
-    if (step % 8 === 0) {
-      const chord = track.chords[Math.floor(step / 8) % track.chords.length];
-      chord.forEach((note, index) => synth(frequency(track.root, note + 12), beatLength * 3.6, "sine", .009, 850, index * 4 - 4));
+    if (bassNote !== null) synth(frequency(track.root, bassNote), beatLength * .68, track.bassWave, .085, track.bassCutoff);
+    if (leadNote !== null) {
+      const leadGain = selectedTrack === 1 ? .038 : selectedTrack === 2 ? .03 : .026;
+      synth(frequency(track.root, leadNote), beatLength * (selectedTrack === 0 ? 1.15 : .38), track.leadWave, leadGain, selectedTrack === 0 ? 1900 : 1350, step % 4 === 0 ? -6 : 6, selectedTrack === 0 ? .5 : .12, selectedTrack === 0 ? .08 : .012);
+    }
+    if (track.kickSteps.includes(step % 16)) kick(selectedTrack === 2 ? .82 : 1);
+    if (track.snareSteps.includes(step % 16)) noiseHit("snare");
+    if (track.hatEvery && step % track.hatEvery === 0) noiseHit("hat");
+    if (step % track.chordEvery === 0) {
+      const chord = track.chords[Math.floor(step / track.chordEvery) % track.chords.length];
+      const chordLength = selectedTrack === 0 ? beatLength * 7.2 : beatLength * 3.2;
+      const chordGain = selectedTrack === 0 ? .018 : .009;
+      chord.forEach((note, index) => synth(frequency(track.root, note + 12), chordLength, "sine", chordGain, selectedTrack === 0 ? 1050 : 720, index * 5 - 7, selectedTrack === 0 ? .65 : .18, .22));
     }
     step = (step + 1) % 32;
   }
@@ -224,7 +302,7 @@
     requestedVolume = Number(volume.value);
     volumeValue.textContent = `${requestedVolume}%`;
     localStorage.setItem("zc-audio-volume", String(requestedVolume));
-    if (master && audioContext) master.gain.setTargetAtTime(requestedVolume / 100 * .32, audioContext.currentTime, .025);
+    if (master && audioContext) master.gain.setTargetAtTime(volumeToGain(requestedVolume), audioContext.currentTime, .025);
   });
   document.addEventListener("keydown", event => {
     if (event.key === "Escape" && dock.classList.contains("open")) setOpen(false);
