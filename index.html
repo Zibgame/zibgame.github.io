@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="icon.png">
-  <link rel="stylesheet" href="style.css?v=20260826-1">
+  <link rel="stylesheet" href="style.css?v=20260826-2">
 </head>
 <body>
   <div class="page-top" id="page-top" aria-hidden="true"></div>
@@ -220,6 +220,38 @@
 
   <a class="quick-contact" href="mailto:zcadinot@student.42lehavre.fr" aria-label="Email Zibrian"><span>ONLINE</span> @ contact</a>
 
+  <aside class="audio-dock" id="audio-dock" aria-label="Ambient audio player">
+    <button class="audio-dock-toggle" id="audio-dock-toggle" type="button" aria-expanded="false" aria-controls="audio-panel">
+      <span class="audio-dock-led" aria-hidden="true"></span>
+      <span>AUDIO</span>
+      <span class="audio-dock-bars" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+    <div class="audio-panel" id="audio-panel" aria-hidden="true">
+      <div class="audio-panel-head">
+        <span><i aria-hidden="true"></i> ~/audio.stream</span>
+        <button id="audio-close" type="button" aria-label="Close audio player">ESC</button>
+      </div>
+      <canvas class="audio-visualizer" id="audio-visualizer" width="260" height="58" aria-label="Audio spectrum visualizer"></canvas>
+      <div class="audio-now-playing">
+        <span class="audio-track-index" id="audio-track-index">01 / 03</span>
+        <strong id="audio-track-name">Signal Drift</strong>
+        <small id="audio-state">STANDBY</small>
+      </div>
+      <div class="audio-controls" aria-label="Playback controls">
+        <button id="audio-prev" type="button" aria-label="Previous track">|&lt;</button>
+        <button class="audio-play" id="audio-play" type="button" aria-label="Play Signal Drift"><span aria-hidden="true">PLAY</span></button>
+        <button id="audio-next" type="button" aria-label="Next track">&gt;|</button>
+      </div>
+      <div class="audio-track-list" id="audio-track-list" aria-label="Select ambient track"></div>
+      <label class="audio-volume" for="audio-volume">
+        <span>VOL</span>
+        <input id="audio-volume" type="range" min="0" max="100" value="28" aria-label="Audio volume">
+        <output id="audio-volume-value" for="audio-volume">28%</output>
+      </label>
+      <p class="audio-note">Procedural audio // generated locally</p>
+    </div>
+  </aside>
+
   <footer class="section-shell footer">
     <span>© <span id="year"></span> Zibrian Cadinot</span>
     <span class="footer-status"><i></i> All systems nominal</span>
@@ -235,5 +267,6 @@
 
   <script src="vim-nav.js?v=20260826-1"></script>
   <script src="main.js?v=20260826-1"></script>
+  <script src="audio-player.js?v=20260826-1"></script>
 </body>
 </html>
