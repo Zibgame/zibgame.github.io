@@ -15,7 +15,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" href="icon.png">
-  <link rel="stylesheet" href="style.css?v=20260826-3">
+  <link rel="stylesheet" href="style.css?v=20261024-1">
 </head>
 <body>
   <div class="page-top" id="page-top" aria-hidden="true"></div>
@@ -40,7 +40,7 @@
       <span class="brand-copy"><strong>Zibrian Cadinot</strong><small>security / systems</small></span>
     </a>
     <nav class="nav" aria-label="Main navigation">
-      <a href="#work">Projects <sup>48</sup></a>
+      <a href="#work">Projects <sup data-stat="selected">35</sup></a>
       <a href="#stack">Stack</a>
       <a href="#stats">Stats</a>
       <a href="#about">About</a>
@@ -56,12 +56,12 @@
       <div class="hero-copy">
         <p class="eyebrow"><span class="status-pulse"></span> zibgame@42lehavre:~$ whoami</p>
         <h1 id="hero-title"><span>Zibrian</span><br>Cadinot<span class="terminal-caret">_</span></h1>
-        <p class="hero-role">SECURITY RESEARCH // LOW-LEVEL // AI & DEV TOOLS</p>
-        <p class="hero-lead">I’m a 42 Le Havre student who learns by opening systems up, understanding what happens underneath, then building tools around it — from Windows security research to AI automation.</p>
+        <p class="hero-role">OFFENSIVE SECURITY // DEFENSIVE THINKING // LOW-LEVEL SYSTEMS</p>
+        <p class="hero-lead">I’m a cybersecurity student at 42 Le Havre, focused on offensive research and low-level engineering. I build in C and C++, study Windows internals, and use an attacker’s perspective to understand how systems fail — and how to defend them.</p>
         <div class="hero-actions">
-          <a class="button button-primary magnetic" href="#work">Browse all 48 projects <span aria-hidden="true">↓</span></a>
+          <a class="button button-primary magnetic" href="#work">Explore selected work <span aria-hidden="true">↓</span></a>
           <a class="button button-secondary magnetic" href="https://github.com/Zibgame" target="_blank" rel="noreferrer">GitHub <span aria-hidden="true">↗</span></a>
-          <a class="button button-ghost magnetic" href="mailto:zcadinot@student.42lehavre.fr">Contact <span aria-hidden="true">@</span></a>
+          <a class="button button-ghost magnetic" href="#contact">Contact <span aria-hidden="true">↓</span></a>
         </div>
         <p class="ethics-note"><span>!</span> Security work is documented for controlled labs, education and authorized research.</p>
       </div>
@@ -74,36 +74,24 @@
         <div class="terminal-body">
           <p><span class="prompt-char">┌─[zibgame@42]─[~/focus]</span></p>
           <p><span class="prompt-char">└─$</span> tree -L 2</p>
-          <div class="terminal-result terminal-tree">.<br>├── cybersecurity<br>│&nbsp;&nbsp; ├── offensive_research<br>│&nbsp;&nbsp; └── blue_team<br>├── low_level<br>│&nbsp;&nbsp; ├── C_C++<br>│&nbsp;&nbsp; └── windows_internals<br>├── artificial_intelligence<br>└── 42_cursus</div>
+          <div class="terminal-result terminal-tree">.<br>├── security<br>│&nbsp;&nbsp; ├── offensive_research<br>│&nbsp;&nbsp; └── defense_detection<br>├── low_level<br>│&nbsp;&nbsp; ├── C_C++_assembly<br>│&nbsp;&nbsp; └── windows_internals<br>├── AI_automation<br>└── 42_cursus</div>
           <p><span class="prompt-char">└─$</span> git status --short</p>
-          <div class="terminal-result accent">48 repositories tracked<br>working tree: always learning <span class="terminal-caret">█</span></div>
+          <div class="terminal-result accent"><span data-stat="selected">35</span> selected projects · <span data-stat="public">56</span> public repositories<br>working tree: always learning <span class="terminal-caret">█</span></div>
         </div>
       </aside>
 
       <div class="hero-metrics" aria-label="Profile highlights">
-        <div><strong>48</strong><span>projects indexed</span></div>
-        <div><strong>6</strong><span>project categories</span></div>
+        <div><strong data-stat="selected">35</strong><span>selected projects</span></div>
+        <div><strong data-stat="public">56</strong><span>public repositories</span></div>
         <div><strong>C / C++</strong><span>core languages</span></div>
         <div><strong>42</strong><span>Le Havre</span></div>
       </div>
     </section>
 
-    <section class="section-shell project-console reveal" aria-labelledby="project-console-title">
-      <div class="console-command"><span class="section-index" id="project-console-title">00 / QUICK ACCESS</span><code>$ ./projects --category</code></div>
-      <div class="category-launcher" id="category-launcher">
-        <button type="button" data-jump-filter="offensive"><span>01</span><b>Offensive</b><small>10 repos</small></button>
-        <button type="button" data-jump-filter="defensive"><span>02</span><b>Blue team</b><small>6 repos</small></button>
-        <button type="button" data-jump-filter="systems"><span>03</span><b>Low-level</b><small>17 repos</small></button>
-        <button type="button" data-jump-filter="ai"><span>04</span><b>AI</b><small>4 repos</small></button>
-        <button type="button" data-jump-filter="tools"><span>05</span><b>Tools</b><small>22 repos</small></button>
-        <button type="button" data-jump-filter="school"><span>06</span><b>42 cursus</b><small>15 repos</small></button>
-      </div>
-    </section>
-
     <section class="section-shell skills-console reveal" id="stack" aria-labelledby="skills-title">
       <div class="console-section-head">
-        <div><span class="section-index">$ cat /proc/skills</span><h2 id="skills-title">Languages & tools</h2></div>
-        <p>What I actually use to build, break, inspect and automate.</p>
+        <div><span class="section-index">00 / TECHNICAL CORE</span><h2 id="skills-title">Languages & tools</h2></div>
+        <p>Derived from my current public GitHub work — the stack I use to build, break, inspect and automate.</p>
       </div>
       <div class="skill-grid">
         <a class="skill-tile" href="https://en.wikipedia.org/wiki/C_(programming_language)" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/c/c-original.svg" alt=""><b>C</b><small>systems</small></a>
@@ -119,12 +107,12 @@
 
     <section class="section-shell work-section reveal" id="work" aria-labelledby="work-title">
       <div class="section-heading">
-        <div><p class="section-index">01 / PROJECT INDEX</p><h2 id="work-title">Everything I build.</h2></div>
-        <p>All 48 public repositories are visible here. Filter by discipline or search by project, language or keyword.</p>
+        <div><p class="section-index">01 / PROJECT INDEX</p><h2 id="work-title">Selected work, clearly mapped.</h2></div>
+        <p><span data-stat="selected">35</span> projects selected from <span data-stat="public">56</span> public repositories. Filter by discipline or search by project, language or keyword.</p>
       </div>
 
       <div class="archive-head">
-        <div><p class="section-index">$ ls ~/projects</p><h3>Project explorer <span class="archive-total">48 repositories</span></h3></div>
+          <div><p class="section-index">$ ls ~/projects</p><h3>Project explorer <span class="archive-total"><span data-stat="selected">35</span> selected</span></h3></div>
         <label class="search-box">
           <span aria-hidden="true">/</span>
           <span class="sr-only">Search projects</span>
@@ -136,8 +124,13 @@
       <div class="project-grid" id="project-grid"></div>
       <button class="load-more" id="load-more" type="button">Show complete archive <span>+</span></button>
 
-      <div class="featured-head"><span class="section-index">PINNED / OFFENSIVE LAB</span><p>Six offensive-security projects selected from the full archive.</p></div>
-      <div class="featured-grid" id="featured-grid" aria-label="Featured projects"></div>
+      <div class="featured-lab">
+        <div class="featured-head">
+          <div><span class="section-index">01.B / SECURITY LAB</span><h3>Security lab highlights.</h3></div>
+          <p>A focused selection of six projects that best represent my offensive-security and low-level direction.</p>
+        </div>
+        <div class="featured-grid" id="featured-grid" aria-label="Featured projects"></div>
+      </div>
     </section>
 
     <section class="section-shell stats-section reveal" id="stats" aria-labelledby="stats-title">
@@ -146,13 +139,13 @@
         <p>Public contribution and language data from my GitHub profile.</p>
       </div>
       <div class="github-stat-grid">
-        <div class="github-stat"><span>REPOSITORIES</span><strong>50</strong><small>public on GitHub</small></div>
-        <div class="github-stat"><span>STARRED REPOS</span><strong>39</strong><small>saved on GitHub</small></div>
-        <div class="github-stat"><span>FOLLOWERS</span><strong>24</strong><small>GitHub network</small></div>
-        <a class="github-stat github-stat-link" href="https://github.com/Zibgame" target="_blank" rel="noreferrer"><span>PROFILE</span><strong>@Zibgame</strong><small>open on GitHub ↗</small></a>
+        <div class="github-stat"><span>PUBLIC REPOSITORIES</span><strong data-stat="public">56</strong><small>live GitHub metric</small></div>
+        <div class="github-stat"><span>SELECTED PROJECTS</span><strong data-stat="selected">35</strong><small>curated for this portfolio</small></div>
+        <div class="github-stat"><span>STARS EARNED</span><strong data-stat="stars">61</strong><small>across public repositories</small></div>
+        <div class="github-stat"><span>FOLLOWERS</span><strong data-stat="followers">39</strong><small>GitHub network</small></div>
       </div>
       <div class="distribution-wrap">
-        <div class="distribution-copy"><span class="section-index">PROJECT DISTRIBUTION</span><h3>Where the work lives.</h3><p>Projects can belong to several research tracks. Select a bar to open that category in the project explorer.</p></div>
+        <div class="distribution-copy"><span class="section-index">CURRENT FOCUS</span><h3>Where I’m heading.</h3><p>Relative emphasis of my current work — not repository totals. Select a track to open its projects.</p></div>
         <div class="distribution-chart" id="distribution-chart" aria-label="Project distribution by category"></div>
       </div>
       <div class="github-cards">
@@ -207,12 +200,13 @@
         <h2 id="contact-title">Let’s build something<br><em>worth dissecting.</em></h2>
       </div>
       <div class="contact-panel">
-        <p>Open to internships, collaborations and conversations around cybersecurity or low-level engineering.</p>
-        <a class="email-link magnetic" href="mailto:zcadinot@student.42lehavre.fr">zcadinot@student.42lehavre.fr <span>↗</span></a>
+        <p>Open to internships, collaborations and conversations around offensive security, defensive engineering and low-level systems.</p>
         <div class="social-row">
           <a class="social-link" href="https://github.com/Zibgame" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/github/github-original.svg" alt=""><span><b>GitHub</b><small>@Zibgame</small></span><i>↗</i></a>
-          <a class="social-link" href="https://www.linkedin.com/in/zibrian-cadinot-202834399/" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" alt=""><span><b>LinkedIn</b><small>Zibrian Cadinot</small></span><i>↗</i></a>
+          <a class="social-link" href="https://www.linkedin.com/in/zibrian-cadinot" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/linkedin/linkedin-original.svg" alt=""><span><b>LinkedIn</b><small>Zibrian Cadinot</small></span><i>↗</i></a>
           <a class="social-link" href="https://profile.hackthebox.com/profile/019d539a-c442-70f1-b6c9-1231e7ac1b94" target="_blank" rel="noreferrer"><span class="social-monogram">HTB</span><span><b>Hack The Box</b><small>Security profile</small></span><i>↗</i></a>
+          <a class="social-link" href="https://app.intigriti.com/researcher/profile/zibgame" target="_blank" rel="noreferrer"><span class="social-monogram intigriti-monogram">INT</span><span><b>Intigriti</b><small>@zibgame · bug bounty</small></span><i>↗</i></a>
+          <a class="social-link" href="mailto:zcadinot@student.42lehavre.fr"><span class="social-monogram email-monogram">@</span><span><b>Email</b><small>zcadinot@student.42lehavre.fr</small></span><i>↗</i></a>
         </div>
       </div>
     </section>
@@ -266,7 +260,7 @@
   </dialog>
 
   <script src="vim-nav.js?v=20260826-1"></script>
-  <script src="main.js?v=20260826-1"></script>
+  <script src="main.js?v=20261024-1"></script>
   <script src="audio-player.js?v=20260826-2"></script>
 </body>
 </html>

@@ -4,10 +4,12 @@ Static GitHub Pages portfolio focused on cybersecurity, Windows internals, syste
 
 ## Features
 
-- 48 public projects indexed across offensive research, blue team / infrastructure, low-level systems, artificial intelligence, 42 cursus and developer tools
+- 35 recruiter-focused projects selected from 56 public repositories
+- Six recruiter-facing tracks covering offensive security, defense, low-level engineering, AI, tooling and creative work
 - Searchable and filterable project archive
-- Interactive project-distribution graph and GitHub activity cards
+- Interactive project-distribution graph and live GitHub metrics with offline fallbacks
 - Responsive layout, keyboard command palette and optional Vim-style navigation
+- GitHub, LinkedIn, Hack The Box, Intigriti and 42 email contact paths
 - Reduced-motion support and accessible semantic structure
 
 The site is intentionally dependency-free: open `index.html` directly or serve the directory with any static HTTP server.

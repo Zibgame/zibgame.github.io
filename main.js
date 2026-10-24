@@ -1,391 +1,330 @@
 const projects = [
   {
+    name: "Obsidian-Packer",
+    title: "Obsidian Packer",
+    description: "Open-source x86-64 PE packer built to study in-memory loading, mutation and static-signature reduction in controlled labs.",
+    language: "C++",
+    primaryCategory: "offensive",
+    secondaryCategories: ["lowlevel"],
+    tags: ["PE32+", "Windows", "In-memory loader"],
+    featured: true
+  },
+  {
     name: "Stealth-Hypervisor",
-    description: "Type-1 UEFI hypervisor for Windows x64 with VM introspection and guest-memory research.",
+    title: "Stealth Hypervisor",
+    description: "Type-1 UEFI hypervisor for Windows x64 focused on VM introspection, execution control and guest-memory research.",
     language: "C",
-    categories: ["offensive", "systems"],
+    primaryCategory: "offensive",
+    secondaryCategories: ["lowlevel"],
     tags: ["UEFI", "Virtualization", "Windows"],
-    featured: true,
-    accent: "red"
+    featured: true
+  },
+  {
+    name: "ft_shield",
+    title: "ft_shield",
+    description: "Native Win32 security project combining an authenticated multi-client shell, persistence and anti-analysis research.",
+    language: "C",
+    primaryCategory: "offensive",
+    secondaryCategories: ["lowlevel", "school"],
+    tags: ["Win32", "Networking", "Anti-analysis"],
+    featured: true
+  },
+  {
+    name: "ft_rainfall",
+    title: "ft_rainfall",
+    description: "Documented x86-64 ELF exploitation and reverse-engineering work covering stack analysis, control flow and debugging.",
+    language: "x86-64",
+    primaryCategory: "offensive",
+    secondaryCategories: ["lowlevel", "school"],
+    tags: ["Binary exploitation", "ELF", "Reverse engineering"],
+    featured: true
   },
   {
     name: "AntiDebugger-Win64",
-    description: "Lightweight C/C++ library exploring debugger, breakpoint and runtime anomaly detection on Windows.",
+    title: "AntiDebugger Win64",
+    description: "Lightweight C/C++ library exploring debugger detection, breakpoint analysis and runtime anomalies on Windows.",
     language: "C++",
-    categories: ["offensive", "systems"],
-    tags: ["Anti-debug", "WinAPI", "C++"],
-    featured: true,
-    accent: "red"
-  },
-  {
-    name: "C2-Windows-x64",
-    description: "Controlled-lab command-and-control research project demonstrating sockets and remote execution concepts.",
-    language: "C++",
-    categories: ["offensive"],
-    tags: ["Winsock", "Networking", "Windows"],
-    featured: true,
-    accent: "red"
+    primaryCategory: "offensive",
+    secondaryCategories: ["lowlevel", "defensive"],
+    tags: ["Anti-debug", "WinAPI", "Detection"],
+    featured: true
   },
   {
     name: "intigriti-writeups",
-    title: "Bug Bounty Writeups",
-    description: "Real-world web security findings, reports and methodologies covering IDOR, APIs and business logic.",
+    title: "Intigriti Writeups",
+    description: "Authorized web-security findings and technical writeups covering IDOR, APIs, access control and business logic.",
     language: "Research",
-    categories: ["offensive", "defensive"],
-    tags: ["Web security", "PoC", "Reports"]
-  },
-  {
-    name: "Zim",
-    description: "Minimal terminal text editor written in C++ with Vim-inspired modal editing and real-time navigation.",
-    language: "C++",
-    categories: ["systems", "tools"],
-    tags: ["TUI", "Editor", "C++"]
-  },
-  {
-    name: "Mockify",
-    description: "AI-assisted mockup generation pipeline with iterative visual quality control and correction loops.",
-    language: "Python",
-    categories: ["ai", "tools"],
-    tags: ["AI", "Automation", "Vision"]
+    primaryCategory: "offensive",
+    secondaryCategories: ["defensive"],
+    tags: ["Bug bounty", "Web security", "Reports"],
+    featured: true
   },
   {
     name: "PrivEscLib-Win64",
-    description: "Modular Windows privilege-boundary research library for controlled security experimentation.",
+    title: "PrivEscLib Win64",
+    description: "Modular Windows privilege-boundary research library for studying elevation strategies in controlled environments.",
     language: "C++",
-    categories: ["offensive", "systems"],
-    tags: ["Win64", "Privileges"],
-    featured: true,
-    accent: "red"
+    primaryCategory: "offensive",
+    secondaryCategories: ["lowlevel"],
+    tags: ["Win64", "Privileges", "Token security"]
   },
   {
-    name: "TUI-Debugger-Win64",
-    description: "Terminal debugger concept with assembly inspection, register views, breakpoints and stepping.",
+    name: "C2-Windows-x64",
+    title: "C2 Windows x64",
+    description: "Controlled-lab Windows command-channel project demonstrating socket protocols, remote execution and detection surfaces.",
     language: "C++",
-    categories: ["offensive", "systems", "tools"],
-    tags: ["Debugger", "Assembly"],
-    featured: true,
-    accent: "red"
-  },
-  {
-    name: "UDP-Flood-Win64",
-    description: "Educational lab exploring UDP traffic, sockets, threading and denial-of-service mechanics.",
-    language: "C++",
-    categories: ["offensive"],
-    tags: ["UDP", "Networking"]
-  },
-  {
-    name: "reverse-shell-bash",
-    description: "Compact Bash reverse-shell experiment for authorized networking labs.",
-    language: "Shell",
-    categories: ["offensive"],
-    tags: ["Bash", "Networking"]
+    primaryCategory: "offensive",
+    secondaryCategories: ["lowlevel"],
+    tags: ["Winsock", "Networking", "Windows"]
   },
   {
     name: "win64-dll-injector",
     title: "Win64 DLL Injector",
-    description: "Process-memory and DLL-loading experiment built to study low-level Windows internals.",
+    description: "Process-memory and DLL-loading experiment built to study Windows internals and execution visibility.",
     language: "C++",
-    categories: ["offensive", "systems"],
-    tags: ["WinAPI", "Memory"],
-    featured: true,
-    accent: "red"
+    primaryCategory: "offensive",
+    secondaryCategories: ["lowlevel"],
+    tags: ["WinAPI", "Process memory", "DLL loading"]
   },
   {
     name: "PersistenceLib-Win64",
+    title: "PersistenceLib Win64",
     description: "C++ APIs for setting up, detecting and removing common Windows persistence mechanisms in a lab.",
     language: "C++",
-    categories: ["offensive", "defensive"],
-    tags: ["Registry", "Detection"]
+    primaryCategory: "offensive",
+    secondaryCategories: ["defensive", "lowlevel"],
+    tags: ["Registry", "Scheduled tasks", "Detection"]
+  },
+  {
+    name: "UDP-Flood-Win64",
+    title: "UDP Traffic Lab",
+    description: "Educational implementation for understanding UDP traffic stress, sockets, threading and denial-of-service detection.",
+    language: "C++",
+    primaryCategory: "offensive",
+    secondaryCategories: ["defensive"],
+    tags: ["UDP", "Networking", "Controlled lab"]
+  },
+  {
+    name: "BadUSB",
+    description: "USB HID research framework for rapid payload execution and authorized red-team experimentation.",
+    language: "C++",
+    primaryCategory: "offensive",
+    secondaryCategories: [],
+    tags: ["USB HID", "Red team", "Payload research"]
   },
   {
     name: "Inception",
-    description: "Secure multi-container infrastructure with NGINX, WordPress, MariaDB, networks and persistent volumes.",
+    description: "Secure multi-container infrastructure with NGINX, WordPress, MariaDB, isolated networks and persistent volumes.",
     language: "Shell",
-    categories: ["school", "defensive"],
-    tags: ["Docker", "NGINX"]
+    primaryCategory: "defensive",
+    secondaryCategories: ["school"],
+    tags: ["Docker", "NGINX", "Infrastructure"]
   },
   {
     name: "NetPractice",
     description: "TCP/IP addressing, subnetting, routing and gateway configuration through simulated networks.",
     language: "Networking",
-    categories: ["school", "defensive"],
-    tags: ["TCP/IP", "Subnets"]
+    primaryCategory: "defensive",
+    secondaryCategories: ["school"],
+    tags: ["TCP/IP", "Subnets", "Routing"]
   },
   {
     name: "Born2beRoot",
     description: "Linux server administration, virtualization, access policy and system-hardening foundations.",
     language: "Shell",
-    categories: ["school", "defensive"],
-    tags: ["Linux", "Hardening"]
+    primaryCategory: "defensive",
+    secondaryCategories: ["school"],
+    tags: ["Linux", "Hardening", "Access control"]
   },
   {
     name: "Nebula-Os",
     title: "Nebula OS",
-    description: "Windows optimization playbook focused on performance, privacy and a stable native experience.",
+    description: "Windows optimization playbook focused on privacy, stability and reducing unnecessary system overhead.",
     language: "PowerShell",
-    categories: ["defensive", "systems"],
-    tags: ["Windows", "Privacy"]
+    primaryCategory: "defensive",
+    secondaryCategories: ["tooling"],
+    tags: ["Windows", "Privacy", "Hardening"]
   },
   {
-    name: "exam-42",
-    title: "42 Exam Practice",
-    description: "C exercises and practice material for the 42 examination track.",
-    language: "C",
-    categories: ["school"],
-    tags: ["Algorithms", "Practice"]
-  },
-  {
-    name: "42_Piscine",
-    title: "42 Piscine",
-    description: "C, Shell, logic and algorithm foundations completed during the 42 Le Havre Piscine.",
-    language: "C",
-    categories: ["school"],
-    tags: ["C", "Shell"]
-  },
-  {
-    name: "42_cpp",
-    title: "42 C++ Modules",
-    description: "Progressive C++ modules covering object-oriented design, templates, containers and idioms.",
+    name: "Nebula-Optimizer",
+    description: "Windows game-profile launcher designed to reduce system overhead before competitive sessions.",
     language: "C++",
-    categories: ["school", "systems"],
-    tags: ["OOP", "STL"]
+    primaryCategory: "lowlevel",
+    secondaryCategories: ["tooling"],
+    tags: ["Windows", "Performance", "System tooling"]
   },
   {
-    name: "ft_transcendence",
-    title: "ft_transcendence",
-    description: "Full-stack multiplayer web application developed as the final 42 common-core project.",
-    language: "TypeScript",
-    categories: ["school"],
-    tags: ["Full stack", "Multiplayer"]
+    name: "Zim",
+    description: "Minimal terminal text editor written in C++ with Vim-inspired modal editing and real-time navigation.",
+    language: "C++",
+    primaryCategory: "lowlevel",
+    secondaryCategories: ["tooling"],
+    tags: ["TUI", "Editor", "Modal input"]
+  },
+  {
+    name: "ft_libasm",
+    title: "ft_libasm",
+    description: "x86-64 assembly library reimplementing essential routines while exploring ABI rules, syscalls and memory.",
+    language: "Assembly",
+    primaryCategory: "lowlevel",
+    secondaryCategories: ["school"],
+    tags: ["x86-64", "ABI", "Syscalls"]
   },
   {
     name: "Minishell",
     description: "Bash-like POSIX shell with parsing, pipes, redirections, environment variables and built-ins.",
     language: "C",
-    categories: ["school", "systems"],
-    tags: ["Unix", "Processes"]
-  },
-  {
-    name: "so_long",
-    title: "So Long",
-    description: "Small 2D game in C using MiniLibX, with map parsing, events, sprites and a minimal game loop.",
-    language: "C",
-    categories: ["school"],
-    tags: ["MiniLibX", "Game"]
+    primaryCategory: "lowlevel",
+    secondaryCategories: ["school"],
+    tags: ["Unix", "Processes", "Parsing"]
   },
   {
     name: "Philosophers",
     description: "Multithreaded dining-philosophers simulation focused on mutexes, timing and deadlock avoidance.",
     language: "C",
-    categories: ["school", "systems"],
-    tags: ["Threads", "Mutex"]
+    primaryCategory: "lowlevel",
+    secondaryCategories: ["school"],
+    tags: ["Threads", "Mutex", "Concurrency"]
   },
   {
     name: "minitalk",
     title: "Minitalk",
     description: "Client-server inter-process communication using Unix signals and bitwise data transfer.",
     language: "C",
-    categories: ["school", "systems"],
-    tags: ["Signals", "IPC"]
-  },
-  {
-    name: "push_swap",
-    title: "Push Swap",
-    description: "Constrained sorting project focused on algorithm design and operation-count optimization.",
-    language: "C",
-    categories: ["school"],
-    tags: ["Sorting", "Algorithms"]
-  },
-  {
-    name: "ft_printf",
-    title: "ft_printf",
-    description: "Custom implementation of printf with variadic arguments, formatting and conversion parsing.",
-    language: "C",
-    categories: ["school"],
-    tags: ["Variadic", "Parsing"]
+    primaryCategory: "lowlevel",
+    secondaryCategories: ["school"],
+    tags: ["Signals", "IPC", "Bitwise"]
   },
   {
     name: "libft",
     title: "Libft",
-    description: "Personal C standard-library foundation reused across the 42 curriculum.",
+    description: "Personal C standard-library foundation with reusable memory, string and data-structure primitives.",
     language: "C",
-    categories: ["school", "systems"],
-    tags: ["Library", "C"]
+    primaryCategory: "lowlevel",
+    secondaryCategories: ["school"],
+    tags: ["Memory", "Library", "C"]
   },
   {
-    name: "Nebula-Optimizer",
-    description: "Windows game-profile launcher designed to reduce system overhead before competitive sessions.",
-    language: "C++",
-    categories: ["systems", "tools"],
-    tags: ["Windows", "Performance"]
-  },
-  {
-    name: "asm-lib",
-    title: "Assembly Library",
-    description: "x86_64 assembly practice library reimplementing essential routines through Linux syscalls.",
-    language: "C / ASM",
-    categories: ["systems"],
-    tags: ["x86_64", "Syscalls"]
-  },
-  {
-    name: "ft_randint",
-    title: "ft_randint",
-    description: "Small C experiment implementing a custom pseudo-random integer generator.",
-    language: "C",
-    categories: ["systems"],
-    tags: ["PRNG", "Low-level"]
-  },
-  {
-    name: "qr_code_generator",
-    title: "Terminal QR Generator",
-    description: "C program that generates and renders QR codes directly inside the terminal.",
-    language: "C",
-    categories: ["systems", "tools"],
-    tags: ["Terminal", "QR"]
-  },
-  {
-    name: "Xsh",
-    description: "Fast, modular Zsh framework with a simple plugin, theme and option system.",
-    language: "Shell",
-    categories: ["systems", "tools"],
-    tags: ["Zsh", "Framework"]
-  },
-  {
-    name: "Listify",
-    description: "AI-powered generator for structured Etsy titles, descriptions, tags and listing automation.",
-    language: "AI / Web",
-    categories: ["ai", "tools"],
-    tags: ["AI", "SEO"]
-  },
-  {
-    name: "ClixCord",
-    description: "Command-line utility that pipes terminal messages to Discord users.",
-    language: "CLI",
-    categories: ["tools"],
-    tags: ["Discord", "Automation"]
-  },
-  {
-    name: "ft_connect.cpp",
-    title: "ft_connect.cpp",
-    description: "Developer connectivity experiment combining a small Python codebase with a C++-focused workflow.",
+    name: "Mockify",
+    description: "AI-assisted mockup generation pipeline with automated visual inspection and iterative correction loops.",
     language: "Python",
-    categories: ["tools"],
-    tags: ["Developer tool"]
-  },
-  {
-    name: "Client-app",
-    title: "Client App",
-    description: "Python client application experiment and interface prototype.",
-    language: "Python",
-    categories: ["tools"],
-    tags: ["Client", "Prototype"]
+    primaryCategory: "ai",
+    secondaryCategories: ["creative"],
+    tags: ["AI", "Automation", "Vision"]
   },
   {
     name: "norm-ai-fixer",
     title: "Norm AI Fixer",
-    description: "Offline AI-assisted CLI that analyses and refactors code against configurable rules, including 42 Norm.",
+    description: "Offline AI-assisted CLI that analyses and refactors code against configurable rules, including the 42 Norm.",
     language: "Python",
-    categories: ["ai", "tools"],
-    tags: ["Local AI", "CLI"]
+    primaryCategory: "ai",
+    secondaryCategories: ["tooling"],
+    tags: ["Local AI", "CLI", "Refactoring"]
   },
   {
     name: "ai-guitar-midi-amp-controller",
     title: "AI Guitar MIDI Controller",
     description: "Python experiment for AI-assisted control of a guitar amplifier through MIDI.",
     language: "Python",
-    categories: ["ai", "tools"],
-    tags: ["MIDI", "Audio"]
+    primaryCategory: "ai",
+    secondaryCategories: ["creative"],
+    tags: ["MIDI", "Audio", "Automation"]
   },
   {
-    name: "calculator-app",
-    title: "WPF Calculator",
-    description: "Clean C# WPF calculator with keyboard input and an extensible desktop interface.",
-    language: "C#",
-    categories: ["tools"],
-    tags: ["WPF", "Desktop"]
+    name: "42_Piscine",
+    title: "42 Piscine",
+    description: "C, Shell, logic and algorithm foundations completed during the 42 Le Havre Piscine.",
+    language: "C",
+    primaryCategory: "lowlevel",
+    secondaryCategories: ["school"],
+    tags: ["C", "Shell", "Algorithms"]
+  },
+  {
+    name: "42_cpp",
+    title: "42 C++ Modules",
+    description: "Progressive C++ modules covering object-oriented design, templates, containers and modern idioms.",
+    language: "C++",
+    primaryCategory: "lowlevel",
+    secondaryCategories: ["school"],
+    tags: ["OOP", "STL", "Templates"]
+  },
+  {
+    name: "ft_transcendence",
+    title: "ft_transcendence",
+    description: "Full-stack multiplayer web application developed as the final 42 common-core project.",
+    language: "TypeScript",
+    primaryCategory: "tooling",
+    secondaryCategories: ["school"],
+    tags: ["Full stack", "Multiplayer", "Web"]
+  },
+  {
+    name: "push_swap",
+    title: "Push Swap",
+    description: "Constrained sorting project focused on algorithm design and operation-count optimization.",
+    language: "C",
+    primaryCategory: "lowlevel",
+    secondaryCategories: ["school"],
+    tags: ["Sorting", "Algorithms", "Optimization"]
+  },
+  {
+    name: "ft_printf",
+    title: "ft_printf",
+    description: "Custom implementation of printf with variadic arguments, formatting and conversion parsing.",
+    language: "C",
+    primaryCategory: "lowlevel",
+    secondaryCategories: ["school"],
+    tags: ["Variadic", "Parsing", "Formatting"]
   },
   {
     name: "improve-norminette",
     title: "Improved Norminette",
-    description: "Personalized tooling for checking and improving code compliance with the 42 style rules.",
+    description: "Python tooling for checking and improving code compliance with the 42 style rules.",
     language: "Python",
-    categories: ["tools", "school"],
-    tags: ["Linting", "42 Norm"]
+    primaryCategory: "tooling",
+    secondaryCategories: ["school"],
+    tags: ["Linting", "42 Norm", "Developer experience"]
+  },
+  {
+    name: "arch-hyprland-config",
+    title: "Arch Hyprland Environment",
+    description: "Personal Arch Linux and Hyprland environment focused on a fast keyboard-driven workflow.",
+    language: "GLSL / Config",
+    primaryCategory: "tooling",
+    secondaryCategories: [],
+    tags: ["Arch Linux", "Hyprland", "Workflow"]
+  },
+  {
+    name: "so_long",
+    title: "So Long",
+    description: "Small 2D game in C using MiniLibX, with map parsing, events, sprites and a minimal game loop.",
+    language: "C",
+    primaryCategory: "creative",
+    secondaryCategories: ["school"],
+    tags: ["MiniLibX", "Game", "Rendering"]
   },
   {
     name: "a_game_about_thing",
     title: "A Game About Thing",
-    description: "Experimental game project built in C around a deliberately minimal concept.",
+    description: "Experimental game project in C exploring a deliberately minimal concept and custom gameplay systems.",
     language: "C",
-    categories: ["tools"],
-    tags: ["Game", "Prototype"]
-  },
-  {
-    name: "Vim-Config",
-    title: "Vim Config",
-    description: "Personal Vim environment tuned for a fast keyboard-first development workflow.",
-    language: "Vim Script",
-    categories: ["tools"],
-    tags: ["Vim", "Dotfiles"]
-  },
-  {
-    name: "Nvim-Config",
-    title: "Neovim Config",
-    description: "Personal Neovim configuration and editor workflow experiments.",
-    language: "Vim Script",
-    categories: ["tools"],
-    tags: ["Neovim", "Dotfiles"]
-  },
-  {
-    name: "zsh-config",
-    title: "Zsh Config",
-    description: "Personal Zsh configuration for a productive terminal environment.",
-    language: "Shell",
-    categories: ["tools"],
-    tags: ["Zsh", "Dotfiles"]
-  },
-  {
-    name: "gnome-profile",
-    title: "GNOME Profile",
-    description: "Personal GNOME desktop profile and environment configuration.",
-    language: "Config",
-    categories: ["tools"],
-    tags: ["GNOME", "Linux"]
-  },
-  {
-    name: "Vim-C_compiler",
-    title: "Vim C Compiler",
-    description: "Vim workflow helper for compiling C projects directly from the editor.",
-    language: "Vim Script",
-    categories: ["tools"],
-    tags: ["Vim", "C"]
-  },
-  {
-    name: "arch-hyprland-config",
-    title: "Arch Hyprland Config",
-    description: "Personal Arch Linux and Hyprland desktop configuration with custom visual tooling.",
-    language: "GLSL",
-    categories: ["tools"],
-    tags: ["Arch", "Hyprland"]
-  },
-  {
-    name: "Zmoonfly",
-    description: "Custom Vim colorscheme designed for focused development sessions.",
-    language: "Vim Script",
-    categories: ["tools"],
-    tags: ["Vim", "Theme"]
+    primaryCategory: "creative",
+    secondaryCategories: [],
+    tags: ["Game", "Prototype", "C"]
   }
 ];
 
 const categoryMeta = {
-  all: { label: "All" },
-  offensive: { label: "Offensive / research" },
-  defensive: { label: "Blue team / infra" },
-  systems: { label: "Low-level systems" },
-  ai: { label: "Artificial intelligence" },
-  school: { label: "42 cursus" },
-  tools: { label: "Tools / creative" }
+  all: { label: "All projects", shortLabel: "All", color: "#00ff95" },
+  offensive: { label: "Offensive security", shortLabel: "Offensive", color: "#ff4060" },
+  defensive: { label: "Defense & infrastructure", shortLabel: "Defense", color: "#00d4ff" },
+  lowlevel: { label: "Low-level & reverse", shortLabel: "Low-level", color: "#00ff95" },
+  ai: { label: "AI & automation", shortLabel: "AI", color: "#ffc85a" },
+  school: { label: "42 coursework", shortLabel: "42", color: "#4ea1ff", filter: false },
+  tooling: { label: "Developer tooling", shortLabel: "Tooling", color: "#a678ff" },
+  creative: { label: "Creative & games", shortLabel: "Creative", color: "#ff75b5" }
 };
+
+const projectCategories = project => [project.primaryCategory, ...(project.secondaryCategories || [])];
 
 const featuredGrid = document.querySelector("#featured-grid");
 const projectGrid = document.querySelector("#project-grid");
@@ -405,9 +344,9 @@ function renderFeatured() {
   featuredGrid.innerHTML = projects
     .filter(project => project.featured)
     .map((project, index) => `
-      <a class="featured-card" data-accent="${project.accent}" data-code="0${index + 1}" href="${projectUrl(project)}" target="_blank" rel="noreferrer">
+      <a class="featured-card project-enter" data-category="${project.primaryCategory}" data-code="0${index + 1}" style="--category-color:${categoryMeta[project.primaryCategory].color}" href="${projectUrl(project)}" target="_blank" rel="noreferrer">
         <div class="featured-top">
-          <span class="featured-type">${categoryMeta[project.categories[0]].label}</span>
+          <span class="featured-type">${categoryMeta[project.primaryCategory].label}</span>
           <span class="featured-arrow" aria-hidden="true">↗</span>
         </div>
         <h3>${projectTitle(project)}</h3>
@@ -415,20 +354,29 @@ function renderFeatured() {
         <div class="featured-meta">${project.tags.map(tag => `<span>${tag}</span>`).join("")}<span>${project.language}</span></div>
       </a>`)
     .join("");
+
+  requestAnimationFrame(() => {
+    featuredGrid.querySelectorAll(".project-enter").forEach((card, index) => {
+      card.style.setProperty("--enter-delay", `${index * 55}ms`);
+      card.classList.add("entered");
+    });
+  });
 }
 
 function renderFilters() {
-  filterRow.innerHTML = Object.entries(categoryMeta).map(([key, meta]) => {
-    const count = key === "all" ? projects.length : projects.filter(project => project.categories.includes(key)).length;
-    return `<button class="filter-button${key === activeCategory ? " active" : ""}" type="button" data-category="${key}">${meta.label}<span class="filter-count">${count}</span></button>`;
+  filterRow.innerHTML = Object.entries(categoryMeta).filter(([, meta]) => meta.filter !== false).map(([key, meta]) => {
+    const count = key === "all" ? projects.length : projects.filter(project => projectCategories(project).includes(key)).length;
+    return `<button class="filter-button${key === activeCategory ? " active" : ""}" style="--category-color:${meta.color}" type="button" data-category="${key}" aria-pressed="${key === activeCategory}">${meta.label}<span class="filter-count">${count}</span></button>`;
   }).join("");
 }
 
 function filteredProjects() {
   const query = searchInput.value.trim().toLowerCase();
   return projects.filter(project => {
-    const categoryMatches = activeCategory === "all" || project.categories.includes(activeCategory);
-    const haystack = [project.name, projectTitle(project), project.description, project.language, ...project.tags].join(" ").toLowerCase();
+    const categories = projectCategories(project);
+    const categoryMatches = activeCategory === "all" || categories.includes(activeCategory);
+    const categoryLabels = categories.map(category => categoryMeta[category].label);
+    const haystack = [project.name, projectTitle(project), project.description, project.language, ...project.tags, ...categoryLabels].join(" ").toLowerCase();
     return categoryMatches && (!query || haystack.includes(query));
   });
 }
@@ -439,9 +387,9 @@ function renderProjects() {
   const visible = archiveExpanded || activeCategory !== "all" || searching ? filtered : filtered.slice(0, initialProjectCount);
 
   projectGrid.innerHTML = visible.length ? visible.map(project => `
-    <a class="project-card" href="${projectUrl(project)}" target="_blank" rel="noreferrer">
+    <a class="project-card project-enter" data-category="${project.primaryCategory}" style="--category-color:${categoryMeta[project.primaryCategory].color}" href="${projectUrl(project)}" target="_blank" rel="noreferrer">
       <div class="project-card-head">
-        <span class="project-category">${categoryMeta[project.categories[0]].label}</span>
+        <span class="project-category">${categoryMeta[project.primaryCategory].label}</span>
         <span aria-hidden="true">↗</span>
       </div>
       <h3>${projectTitle(project)}</h3>
@@ -453,8 +401,15 @@ function renderProjects() {
   resultsStatus.textContent = `${filtered.length.toString().padStart(2, "0")} result${filtered.length === 1 ? "" : "s"} · ${categoryLabel}`;
   loadMore.hidden = activeCategory !== "all" || searching || filtered.length <= initialProjectCount;
   loadMore.innerHTML = archiveExpanded
-    ? "Collapse archive <span>↑</span>"
-    : `Show ${filtered.length - initialProjectCount} more projects <span>+</span>`;
+    ? "Collapse projects <span>↑</span>"
+    : `Show remaining ${filtered.length - initialProjectCount} projects <span>+</span>`;
+
+  requestAnimationFrame(() => {
+    projectGrid.querySelectorAll(".project-enter").forEach((card, index) => {
+      card.style.setProperty("--enter-delay", `${Math.min(index, 8) * 34}ms`);
+      card.classList.add("entered");
+    });
+  });
 }
 
 filterRow.addEventListener("click", event => {
@@ -483,31 +438,34 @@ function openProjectCategory(category) {
   document.querySelector("#work").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
-document.querySelector("#category-launcher")?.addEventListener("click", event => {
-  const trigger = event.target.closest("[data-jump-filter]");
-  if (trigger) openProjectCategory(trigger.dataset.jumpFilter);
-});
-
 function renderDistributionChart() {
   const chart = document.querySelector("#distribution-chart");
   if (!chart) return;
-  const keys = ["offensive", "defensive", "systems", "ai", "tools", "school"];
-  const values = keys.map(key => ({
-    key,
-    label: categoryMeta[key].label.replace(" / research", "").replace(" / infra", "").replace(" systems", ""),
-    count: projects.filter(project => project.categories.includes(key)).length
-  }));
-  const maximum = Math.max(...values.map(item => item.count));
+  const values = [
+    { key: "offensive", label: "Offensive", focus: 92 },
+    { key: "lowlevel", label: "Low-level", focus: 68 },
+    { key: "defensive", label: "Defense", focus: 38 },
+    { key: "ai", label: "AI", focus: 26 },
+    { key: "tooling", label: "Tooling", focus: 20 },
+    { key: "creative", label: "Creative", focus: 12 }
+  ];
   chart.innerHTML = values.map(item => `
-    <button class="chart-row" type="button" data-category="${item.key}" aria-label="Show ${item.count} ${item.label} projects">
+    <button class="chart-row" type="button" data-category="${item.key}" style="--category-color:${categoryMeta[item.key].color}" aria-label="Open ${item.label} projects">
       <span class="chart-label">${item.label}</span>
-      <span class="chart-track"><span class="chart-bar" style="width:${(item.count / maximum) * 100}%"></span></span>
-      <span class="chart-value">${item.count}</span>
+      <span class="chart-track"><span class="chart-bar" style="--bar-width:${item.focus}%"></span></span>
+      <span class="chart-value">${item.focus}%</span>
     </button>`).join("");
   chart.addEventListener("click", event => {
     const row = event.target.closest("[data-category]");
     if (row) openProjectCategory(row.dataset.category);
   });
+
+  const chartObserver = new IntersectionObserver(entries => {
+    if (!entries.some(entry => entry.isIntersecting)) return;
+    chart.classList.add("chart-visible");
+    chartObserver.disconnect();
+  }, { threshold: .3 });
+  chartObserver.observe(chart);
 }
 
 renderFeatured();
@@ -515,13 +473,77 @@ renderFilters();
 renderProjects();
 renderDistributionChart();
 
+const githubFallback = { publicRepos: 56, followers: 39, stars: 61 };
+
+function setMetric(name, value) {
+  document.querySelectorAll(`[data-stat="${name}"]`).forEach(element => {
+    element.textContent = value;
+  });
+}
+
+setMetric("selected", projects.length);
+setMetric("public", githubFallback.publicRepos);
+setMetric("followers", githubFallback.followers);
+setMetric("stars", githubFallback.stars);
+
+async function refreshGitHubMetrics() {
+  try {
+    const [profileResponse, repositoriesResponse] = await Promise.all([
+      fetch("https://api.github.com/users/Zibgame", { headers: { Accept: "application/vnd.github+json" } }),
+      fetch("https://api.github.com/users/Zibgame/repos?per_page=100&sort=updated", { headers: { Accept: "application/vnd.github+json" } })
+    ]);
+    if (!profileResponse.ok || !repositoriesResponse.ok) throw new Error("GitHub API unavailable");
+    const profile = await profileResponse.json();
+    const repositories = await repositoriesResponse.json();
+    setMetric("public", profile.public_repos);
+    setMetric("followers", profile.followers);
+    setMetric("stars", repositories.reduce((total, repository) => total + repository.stargazers_count, 0));
+    document.querySelector(".github-stat-grid")?.classList.add("is-live");
+  } catch (error) {
+    document.querySelector(".github-stat-grid")?.classList.add("is-fallback");
+  }
+}
+
+refreshGitHubMetrics();
+
+const skillGrid = document.querySelector(".skill-grid");
+const skillTiles = skillGrid ? [...skillGrid.querySelectorAll(".skill-tile")] : [];
+let skillScanIndex = 0;
+let skillScanTimer = 0;
+
+function showNextSkill() {
+  skillTiles.forEach((tile, index) => tile.classList.toggle("is-scanning", index === skillScanIndex));
+  skillScanIndex = (skillScanIndex + 1) % skillTiles.length;
+}
+
+function startSkillScan() {
+  if (!skillTiles.length || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  clearInterval(skillScanTimer);
+  showNextSkill();
+  skillScanTimer = setInterval(showNextSkill, 1150);
+}
+
+function pauseSkillScan() {
+  clearInterval(skillScanTimer);
+  skillScanTimer = 0;
+  skillTiles.forEach(tile => tile.classList.remove("is-scanning"));
+}
+
+skillGrid?.addEventListener("pointerenter", pauseSkillScan);
+skillGrid?.addEventListener("pointerleave", startSkillScan);
+skillGrid?.addEventListener("focusin", pauseSkillScan);
+skillGrid?.addEventListener("focusout", event => {
+  if (!skillGrid.contains(event.relatedTarget)) startSkillScan();
+});
+startSkillScan();
+
 // Boot sequence is brief on the first visit and skipped for the rest of the tab session.
 const bootScreen = document.querySelector("#boot-screen");
 const bootOutput = document.querySelector("#boot-output");
 const bootSkip = document.querySelector("#boot-skip");
 const bootLines = [
   ["dim", "[boot] mounting portfolio filesystem…"],
-  ["ok", "[ ok ] 48 public projects indexed"],
+  ["ok", `[ ok ] ${projects.length} selected projects indexed`],
   ["ok", "[ ok ] security research modules available"],
   ["ok", "[ ok ] identity: zcadinot@student.42lehavre.fr"],
   ["dim", "[exec] opening session for visitor"],
@@ -628,14 +650,24 @@ const commandTrigger = document.querySelector("#command-trigger");
 const commandClose = document.querySelector("#command-close");
 const commandInput = document.querySelector("#command-input");
 const commandList = document.querySelector("#command-list");
-const commands = [
+const sectionCommands = [
   { icon: "01", label: "View project archive", hint: "section", target: "#work" },
   { icon: "02", label: "Inspect skills", hint: "section", target: "#stack" },
   { icon: "03", label: "View GitHub statistics", hint: "section", target: "#stats" },
   { icon: "04", label: "Read profile", hint: "section", target: "#about" },
-  { icon: "05", label: "Contact Zibrian", hint: "section", target: "#contact" },
+  { icon: "05", label: "Contact Zibrian", hint: "section", target: "#contact" }
+];
+const categoryCommands = Object.entries(categoryMeta)
+  .filter(([key, meta]) => key !== "all" && meta.filter !== false)
+  .map(([key, meta], index) => ({ icon: `C${index + 1}`, label: `Filter: ${meta.label}`, hint: "projects", category: key }));
+const commands = [
+  ...sectionCommands,
+  ...categoryCommands,
   { icon: "GH", label: "Open GitHub profile", hint: "external", target: "https://github.com/Zibgame" },
-  { icon: "HT", label: "Open Hack The Box", hint: "external", target: "https://profile.hackthebox.com/profile/019d539a-c442-70f1-b6c9-1231e7ac1b94" }
+  { icon: "LI", label: "Open LinkedIn", hint: "external", target: "https://www.linkedin.com/in/zibrian-cadinot" },
+  { icon: "HT", label: "Open Hack The Box", hint: "external", target: "https://profile.hackthebox.com/profile/019d539a-c442-70f1-b6c9-1231e7ac1b94" },
+  { icon: "IN", label: "Open Intigriti", hint: "external", target: "https://app.intigriti.com/researcher/profile/zibgame" },
+  { icon: "@", label: "Email Zibrian", hint: "contact", target: "mailto:zcadinot@student.42lehavre.fr" }
 ];
 let selectedCommand = 0;
 
@@ -672,7 +704,8 @@ function runCommand(index = selectedCommand) {
   const command = visibleCommands()[index];
   if (!command) return;
   closeCommand();
-  if (command.target.startsWith("#")) document.querySelector(command.target)?.scrollIntoView({ behavior: "smooth" });
+  if (command.category) openProjectCategory(command.category);
+  else if (command.target.startsWith("#")) document.querySelector(command.target)?.scrollIntoView({ behavior: "smooth" });
   else window.open(command.target, "_blank", "noopener,noreferrer");
 }
 
