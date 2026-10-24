@@ -748,7 +748,6 @@ body::after {
 .console-section-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 18px; }
 .console-section-head h2 { margin-top: 5px; font: 600 18px var(--mono); letter-spacing: .03em; text-transform: uppercase; }
 .console-section-head p { max-width: 470px; margin: 0; color: var(--muted); font: 11px/1.7 var(--mono); }
-.toolchain-banner { display: block; width: 100%; height: auto; margin-top: 26px; }
 .skill-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 8px; }
 .skill-tile {
   position: relative;
