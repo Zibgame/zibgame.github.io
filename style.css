@@ -748,7 +748,7 @@ body::after {
 .console-section-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 18px; }
 .console-section-head h2 { margin-top: 5px; font: 600 18px var(--mono); letter-spacing: .03em; text-transform: uppercase; }
 .console-section-head p { max-width: 470px; margin: 0; color: var(--muted); font: 11px/1.7 var(--mono); }
-.skill-grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+.skill-grid { display: grid; grid-template-columns: repeat(10, 1fr); gap: 8px; }
 .skill-tile {
   position: relative;
   min-height: 116px;
@@ -819,7 +819,8 @@ body::after {
 .social-link { min-height: 72px; padding: 12px 14px; display: grid; grid-template-columns: 34px 1fr auto; align-items: center; gap: 12px; border: 1px solid var(--line); background: rgba(4, 14, 18, .65); }
 .social-link:last-child { grid-column: 1 / -1; }
 .social-link img, .social-monogram { width: 31px; height: 31px; object-fit: contain; }
-.social-link img:first-child { filter: invert(1) brightness(.8); }
+.social-link .contact-icon { padding: 4px; border: 1px solid rgba(255, 255, 255, .16); background: rgba(2, 10, 16, .55); filter: none; }
+.social-link .icon-github { padding: 5px; }
 .social-link:nth-child(2) img { filter: none; }
 .social-monogram { display: grid; place-items: center; border: 1px solid var(--green); color: var(--green); font: 600 8px var(--mono); }
 .social-link span { display: flex; flex-direction: column; }
